@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AnoraAI — Hệ Thống Phân Tích Dữ Liệu & Báo Cáo DIID Doanh Nghiệp</title>
+  
+  <!-- Google Fonts: Playfair Display (Serif), Plus Jakarta Sans (Sans), Dancing Script (Aesthetic Script) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- AnoraAI Custom Styles -->
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       TOP NAVIGATION BAR
+       ========================================================================= -->
+  <header class="anora-nav">
+    <div class="brand-wrapper" onclick="switchPage(1)">
+      <img src="/static/images/mascot.svg" alt="AnoraAI Mascot" class="mascot-logo-img">
+      <div class="brand-text">
+        <h1>AnoraAI</h1>
+        <span>Intelligent Business Data Agent</span>
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <!-- Dark / Light Theme Toggle -->
+      <button class="nav-btn" id="themeToggleBtn" title="Chuyển đổi Chế độ Sáng / Tối">
+        <i class="fa-solid fa-moon"></i>
+        <span class="theme-label-text">Tối</span>
+      </button>
+
+      <!-- Làm mới phiên (Reset Session) -->
+      <button class="nav-btn" id="resetSessionBtn" title="Làm mới phiên làm việc">
+        <i class="fa-solid fa-arrows-rotate"></i>
+        <span>Làm mới phiên</span>
+      </button>
+
+      <!-- Lịch sử chạy (Run History) -->
+      <button class="nav-btn" id="historyModalBtn" title="Xem lịch sử các lần chạy trước">
+        <i class="fa-solid fa-clock-rotate-left"></i>
+        <span>Lịch sử chạy</span>
+      </button>
+
+      <!-- Nút Trợ lý ảo AI -->
+      <button class="nav-btn btn-primary-sage" id="openChatTopBtn">
+        <i class="fa-solid fa-sparkles"></i>
+        <span>Trợ lý Anora</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       WIZARD STEP PROGRESS BAR (5 TRANG)
+       ========================================================================= -->
+  <nav class="wizard-bar">
+    <div class="wizard-step active" id="wizardStep1" onclick="switchPage(1)">
+      <span class="step-num">1</span>
+      <span class="step-label">Khởi tạo & Trang chủ</span>
+    </div>
+    <div class="wizard-divider"></div>
+
+    <div class="wizard-step" id="wizardStep2" onclick="switchPage(2)">
+      <span class="step-num">2</span>
+      <span class="step-label">Bước 1: Tiếp nhận Dữ liệu</span>
+    </div>
+    <div class="wizard-divider"></div>
+
+    <div class="wizard-step" id="wizardStep3" onclick="switchPage(3)">
+      <span class="step-num">3</span>
+      <span class="step-label">Bước 2: Làm sạch & Cổng HITL</span>
+    </div>
+    <div class="wizard-divider"></div>
+
+    <div class="wizard-step" id="wizardStep4" onclick="switchPage(4)">
+      <span class="step-num">4</span>
+      <span class="step-label">Bước 3 & 4: Phân tích 4 Cấp độ & Dashboard</span>
+    </div>
+    <div class="wizard-divider"></div>
+
+    <div class="wizard-step" id="wizardStep5" onclick="switchPage(5)">
+      <span class="step-num">5</span>
+      <span class="step-label">Xuất Báo Cáo DIID & 3 Tệp</span>
+    </div>
+  </nav>
+
+  <!-- =========================================================================
+       MAIN APPLICATION VIEWS CONTAINER
+       ========================================================================= -->
+  <main class="anora-main">
+
+    <!-- =====================================================================
+         TRANG 1 — KHỞI TẠO KHUNG DỰ ÁN, GIAO DIỆN & TRANG CHỦ
+         ===================================================================== -->
+    <section class="page-view active" id="pageView1">
+      <div class="hero-card">
+        <div class="hero-flourish">Plan Beautifully, Analyze Intentionally, Decide Confidently. ♡</div>
+        <h2 class="hero-title">Chào mừng đến với AnoraAI</h2>
+        <p class="hero-subtitle">
+          Nền tảng Agent AI thế hệ mới kết hợp sức mạnh xử lý dữ liệu tự động với <strong>Cổng kiểm duyệt con người (HITL)</strong>. 
+          Chuyển hóa dữ liệu thô thành báo cáo điều hành chuẩn <strong>DIID (Data - Information - Insight - Decision)</strong> 
+          và biểu đồ quản trị chuyên sâu.
+        </p>
+        <button class="hero-cta-btn" onclick="switchPage(2)">
+          <span>Bắt đầu phiên phân tích</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- 4 Trụ cột cốt lõi -->
+      <div class="feature-cards-grid">
+        <div class="feature-card">
+          <div class="feature-icon-circle">
+            <i class="fa-solid fa-database"></i>
+          </div>
+          <h3>1. Tiếp nhận & Thẩm định</h3>
+          <p>Thu thập mô hình kinh doanh bắt buộc, bài toán trọng tâm, liên kết Google Sheets hoặc nạp file Excel/CSV nhanh chóng.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-circle rose">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+          <h3>2. Cổng Làm sạch HITL</h3>
+          <p>Bảng đối chiếu Trước - Sau, sửa trực tiếp từng ô, phân loại màu sắc và bộ lọc điều kiện loại bỏ dữ liệu nhiễu.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-circle">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <h3>3. Phân tích 4 Cấp độ</h3>
+          <p>Mô tả → Chẩn đoán (tách bạch Tương quan vs Nhân quả) → Dự đoán xu hướng → Đề xuất hành động 30-90 ngày.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-circle rose">
+            <i class="fa-solid fa-file-word"></i>
+          </div>
+          <h3>4. Xuất 3 Tệp Chuẩn DIID</h3>
+          <p>Tải trọn bộ Word (.docx font Times New Roman 13pt nhúng 4 biểu đồ & khung ký duyệt), Excel sạch (.xlsx) và Web độc lập (.html).</p>
+        </div>
+      </div>
+
+      <!-- Form Đánh giá 1 - 5 Sao báo về Agent -->
+      <div class="feedback-box">
+        <h4><i class="fa-regular fa-heart" style="color: var(--rose-primary);"></i> Đánh giá trải nghiệm của bạn về AnoraAI</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">
+          Ý kiến đánh giá và số sao của bạn sẽ được gửi trực tiếp về hệ thống Agent để cải thiện chất lượng phục vụ.
+        </p>
+        <div class="star-rating-row" id="starRatingRow">
+          <i class="fa-solid fa-star star" data-star="1"></i>
+          <i class="fa-solid fa-star star" data-star="2"></i>
+          <i class="fa-solid fa-star star" data-star="3"></i>
+          <i class="fa-solid fa-star star" data-star="4"></i>
+          <i class="fa-solid fa-star star selected" data-star="5"></i>
+        </div>
+        <textarea class="feedback-textarea" id="feedbackComment" rows="2" placeholder="Góp ý hoặc nhận xét của bạn dành cho Trợ lý Anora..."></textarea>
+        <button class="nav-btn btn-primary-sage" id="submitFeedbackBtn" style="margin: 0 auto;">
+          <i class="fa-solid fa-paper-plane"></i>
+          <span>Gửi đánh giá về Agent</span>
+        </button>
+        <div id="feedbackNotice" style="margin-top: 10px; font-size: 0.82rem; font-weight: 600; display: none;"></div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         TRANG 2 — BƯỚC 1 (TIẾP NHẬN DỮ LIỆU & RÀNG BUỘC CHẶN)
+         ===================================================================== -->
+    <section class="page-view" id="pageView2">
+      <div class="form-step-container">
+        <!-- Cột Trái: Thông tin Doanh nghiệp & Bài toán -->
+        <div class="anora-panel">
+          <div class="panel-header">
+            <h2>Hồ Sơ Doanh Nghiệp & Bài Toán Trọng Tâm</h2>
+            <p>Vui lòng khai báo thông tin nền tảng để Agent định hình giả thuyết phân tích.</p>
+          </div>
+
+          <form id="ingestForm">
+            <div class="form-group">
+              <label class="form-label">Tên Doanh nghiệp / Thương hiệu <span class="required-star">*</span></label>
+              <input type="text" class="anora-input" id="businessNameInput" value="Công ty Cổ phần Anora Retail" placeholder="Ví dụ: Công ty TNHH Giải pháp Anora" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Mô hình Kinh doanh <span class="required-star">* (Bắt buộc chọn / nhập)</span></label>
+              <select class="anora-select" id="businessModelSelect" required>
+                <option value="" disabled>-- Vui lòng chọn mô hình kinh doanh --</option>
+                <option value="B2C Bán lẻ & Chuỗi F&B" selected>B2C Bán lẻ & Chuỗi F&B (Nhà hàng, Quán cafe, Cửa hàng tiện lợi)</option>
+                <option value="B2B SaaS & Phần mềm dịch vụ">B2B SaaS & Phần mềm dịch vụ (Thuê bao, MRR/ARR, Churn)</option>
+                <option value="Sản xuất & Chuỗi cung ứng">Sản xuất & Chuỗi cung ứng (Nhà máy, Định mức nguyên liệu, Tồn kho)</option>
+                <option value="Thương mại điện tử E-commerce">Thương mại điện tử E-commerce (Đơn hàng online, Kênh sàn, Ads ROI)</option>
+                <option value="Dịch vụ & Tư vấn Chuyên nghiệp">Dịch vụ & Tư vấn Chuyên nghiệp (Dự án, Nhân sự, Phí dịch vụ)</option>
+                <option value="custom">-- Nhập mô hình kinh doanh tùy chỉnh khác --</option>
+              </select>
+              <input type="text" class="anora-input" id="customModelInput" placeholder="Nhập mô hình kinh doanh tùy chỉnh..." style="margin-top: 8px; display: none;">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Bài toán Trọng tâm Cần Phân tích <span class="required-star">*</span></label>
+              <select class="anora-select" id="coreProblemSelect">
+                <option value="Tối ưu hóa cơ cấu chi phí vận hành & Tăng biên lợi nhuận ròng" selected>Tối ưu hóa cơ cấu chi phí vận hành & Tăng biên lợi nhuận ròng</option>
+                <option value="Phân tích nguyên nhân sụt giảm doanh thu & Rời bỏ khách hàng (Churn)">Phân tích nguyên nhân sụt giảm doanh thu & Rời bỏ khách hàng (Churn)</option>
+                <option value="Đánh giá hiệu quả các kênh bán hàng & Năng suất từng đơn vị vùng miền">Đánh giá hiệu quả các kênh bán hàng & Năng suất từng đơn vị vùng miền</option>
+                <option value="Tối ưu hóa vòng quay hàng tồn kho & Kiểm soát tỷ lệ hàng lỗi sản xuất">Tối ưu hóa vòng quay hàng tồn kho & Kiểm soát tỷ lệ hàng lỗi sản xuất</option>
+                <option value="custom">-- Nhập bài toán trọng tâm riêng của doanh nghiệp --</option>
+              </select>
+              <input type="text" class="anora-input" id="customProblemInput" placeholder="Nhập bài toán phân tích cụ thể..." style="margin-top: 8px; display: none;">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Thông tin Bổ sung / Giả thuyết Sơ bộ</label>
+              <textarea class="anora-textarea" id="additionalInfoInput" rows="3" placeholder="Nhập các bối cảnh đặc thù, kỳ vọng của Hội đồng Quản trị hoặc ghi chú về dữ liệu..."></textarea>
+            </div>
+          </form>
+        </div>
+
+        <!-- Cột Phải: Nạp Dữ Liệu (Mẫu, Upload, Google Sheets) -->
+        <div class="anora-panel">
+          <div class="panel-header">
+            <h2>Nạp Dữ Liệu Kinh Doanh</h2>
+            <p>Hỗ trợ dùng thử 3 bộ dữ liệu thực tế, tải tệp hoặc liên kết Google Sheets.</p>
+          </div>
+
+          <!-- Lựa chọn 1: 3 Bộ Dữ Liệu Mẫu -->
+          <div style="margin-bottom: 20px;">
+            <label class="form-label"><i class="fa-solid fa-database" style="color: var(--sage-primary);"></i> Cách 1: Chọn Bộ Dữ Liệu Mẫu (Khuyên dùng để trải nghiệm)</label>
+            <div class="sample-datasets-list">
+              <div class="sample-data-card selected" data-sample="retail" onclick="selectSampleDataset('retail')">
+                <div class="sample-info">
+                  <h5>1. Chuỗi Bán lẻ & F&B Thực tế</h5>
+                  <p>Doanh thu, Chi phí, Đơn hàng, Vùng miền Bắc-Trung-Nam (Có dòng trùng & giá trị thiếu để test HITL)</p>
+                </div>
+                <i class="fa-solid fa-circle-check" style="color: var(--sage-primary); font-size: 1.2rem;"></i>
+              </div>
+
+              <div class="sample-data-card" data-sample="saas" onclick="selectSampleDataset('saas')">
+                <div class="sample-info">
+                  <h5>2. B2B SaaS Doanh thu & Churn</h5>
+                  <p>Khách hàng, Gói dịch vụ, MRR, Chi phí CSKH, Số Ticket, Điểm NPS, Tỷ lệ gia hạn</p>
+                </div>
+                <i class="fa-regular fa-circle" style="color: var(--text-muted); font-size: 1.2rem;"></i>
+              </div>
+
+              <div class="sample-data-card" data-sample="manufacturing" onclick="selectSampleDataset('manufacturing')">
+                <div class="sample-info">
+                  <h5>3. Sản xuất & Chuỗi Cung ứng</h5>
+                  <p>Nhà máy, Dòng sản phẩm, Sản lượng, Chi phí nguyên liệu, Vận chuyển, Tỷ lệ lỗi</p>
+                </div>
+                <i class="fa-regular fa-circle" style="color: var(--text-muted); font-size: 1.2rem;"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lựa chọn 2: Tải File Lên -->
+          <div style="margin-bottom: 20px;">
+            <label class="form-label"><i class="fa-solid fa-cloud-arrow-up" style="color: var(--rose-primary);"></i> Cách 2: Tải File Excel hoặc CSV từ máy tính</label>
+            <div class="dropzone-box" onclick="document.getElementById('fileUploadInput').click()">
+              <i class="fa-solid fa-file-excel" style="font-size: 2rem; color: var(--sage-medium); margin-bottom: 8px;"></i>
+              <div style="font-weight: 600; font-size: 0.9rem;" id="fileNameDisplay">Bấm vào đây để chọn file (.xlsx, .xls, .csv)</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Dung lượng tối đa 20MB</div>
+            </div>
+            <input type="file" id="fileUploadInput" accept=".xlsx,.xls,.csv" style="display: none;" onchange="handleFileSelected(event)">
+          </div>
+
+          <!-- Lựa chọn 3: Google Sheets -->
+          <div style="margin-bottom: 20px;">
+            <label class="form-label"><i class="fa-brands fa-google-drive" style="color: #4285F4;"></i> Cách 3: Dán link Google Sheets</label>
+            <input type="url" class="anora-input" id="gsheetUrlInput" placeholder="https://docs.google.com/spreadsheets/d/...">
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">* Đảm bảo bảng tính đã được mở quyền 'Bất kỳ ai có liên kết' (Public).</div>
+          </div>
+
+          <!-- Chặn không cho đi tiếp nếu thiếu điều kiện -->
+          <div class="guard-alert" id="guardAlertBox">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span id="guardAlertText">Hệ thống sẵn sàng: Bạn đã chọn Mô hình kinh doanh và Bộ dữ liệu mẫu.</span>
+          </div>
+
+          <div style="margin-top: 24px; display: flex; justify-content: flex-end;">
+            <button class="hero-cta-btn" id="proceedStep2Btn" onclick="submitStep1AndProceed()">
+              <span>Tiếp tục sang Bước 2 (Làm sạch HITL)</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         TRANG 3 — BƯỚC 2 (LÀM SẠCH DỮ LIỆU & CỔNG KIỂM DUYỆT HITL)
+         ===================================================================== -->
+    <section class="page-view" id="pageView3">
+      <!-- Bảng đối chiếu Trước - Sau (Comparison Stats Cards) -->
+      <div class="clean-stats-row">
+        <div class="stat-card">
+          <div>
+            <div class="label">Tổng Dòng Dữ Liệu</div>
+            <div class="val" id="statTotalRows">--</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);" id="statRowsDelta">Trước: -- | Sau: --</div>
+          </div>
+          <i class="fa-solid fa-table-list" style="color: var(--sage-light); font-size: 1.6rem;"></i>
+        </div>
+
+        <div class="stat-card">
+          <div>
+            <div class="label">Ô Khuyết Thiếu (Null)</div>
+            <div class="val" id="statNullCells">--</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);" id="statNullDelta">Đã điền: --</div>
+          </div>
+          <i class="fa-solid fa-circle-exclamation" style="color: var(--rose-primary); font-size: 1.6rem;"></i>
+        </div>
+
+        <div class="stat-card">
+          <div>
+            <div class="label">Dòng Trùng Lặp</div>
+            <div class="val" id="statDuplicateRows">--</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">Đã tự động loại bỏ</div>
+          </div>
+          <i class="fa-solid fa-clone" style="color: var(--gold-accent); font-size: 1.6rem;"></i>
+        </div>
+
+        <div class="stat-card rose">
+          <div>
+            <div class="label">Điểm Tin Cậy Dữ Liệu</div>
+            <div class="val" id="statQualityScore">--%</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);" id="statQualityDelta">Chuẩn HITL</div>
+          </div>
+          <i class="fa-solid fa-shield-heart" style="color: var(--rose-primary); font-size: 1.6rem;"></i>
+        </div>
+      </div>
+
+      <!-- Tùy chọn cấu hình làm sạch & Chú thích Màu sắc -->
+      <div class="filter-toolbar">
+        <div style="font-weight: 700; font-size: 0.9rem; color: var(--sage-dark); margin-right: 8px;">
+          <i class="fa-solid fa-sliders"></i> Cấu hình làm sạch:
+        </div>
+        <label style="font-size: 0.84rem; display: flex; align-items: center; gap: 6px; cursor: pointer;">
+          <input type="checkbox" id="cfgRemoveDups" checked> Khử trùng lặp
+        </label>
+        <label style="font-size: 0.84rem; display: flex; align-items: center; gap: 6px; cursor: pointer;">
+          <input type="checkbox" id="cfgExpandAbbrev" checked> Chuẩn hóa viết tắt (BD → Bình Dương,...)
+        </label>
+        <label style="font-size: 0.84rem; display: flex; align-items: center; gap: 6px; cursor: pointer;">
+          <input type="checkbox" id="cfgFixNegatives" checked> Hiệu chỉnh số lượng & số âm
+        </label>
+        <label style="font-size: 0.84rem; display: flex; align-items: center; gap: 6px; cursor: pointer;">
+          <input type="checkbox" id="cfgStandardizeDates" checked> Đồng bộ ngày ISO
+        </label>
+        <label style="font-size: 0.84rem; display: flex; align-items: center; gap: 6px; cursor: pointer;">
+          <input type="checkbox" id="cfgTrimText" checked> Chuẩn hóa khoảng trắng
+        </label>
+        <select class="anora-select" id="cfgMissingSelect" style="width: auto; padding: 6px 12px; font-size: 0.82rem;">
+          <option value="unspecified" selected>Điền "Chưa xác định" cho ô trống (Khuyên dùng)</option>
+          <option value="median">Điền Trung vị (Median)</option>
+          <option value="mean">Điền Trung bình (Mean)</option>
+          <option value="drop">Loại bỏ hoàn toàn dòng khuyết</option>
+        </select>
+        <button class="nav-btn btn-primary-sage" id="btnAutoClean" onclick="triggerAutoClean()" style="padding: 6px 18px; min-width: 170px;">
+          <i class="fa-solid fa-bolt"></i> <span>Thực hiện làm sạch</span>
+        </button>
+      </div>
+
+      <!-- Thanh Công cụ Lọc Xóa Dòng theo Điều kiện (Ví dụ: Bỏ Miền Bắc, Giữ Miền Trung & Nam) -->
+      <div class="filter-toolbar" style="background: var(--bg-surface); border-left: 4px solid var(--rose-primary);">
+        <div style="font-weight: 700; font-size: 0.88rem; color: var(--rose-dark);">
+          <i class="fa-solid fa-filter"></i> Bộ lọc điều kiện HITL:
+        </div>
+        <select class="anora-select" id="filterColumnSelect" style="width: 170px; padding: 6px 10px; font-size: 0.82rem;">
+          <!-- Dynamically populated -->
+        </select>
+        <select class="anora-select" id="filterOperatorSelect" style="width: 140px; padding: 6px 10px; font-size: 0.82rem;">
+          <option value="equals">Bằng (=)</option>
+          <option value="contains" selected>Chứa ký tự</option>
+          <option value="not_equals">Khác (≠)</option>
+          <option value="greater_than">Lớn hơn (&gt;)</option>
+          <option value="less_than">Nhỏ hơn (&lt;)</option>
+        </select>
+        <input type="text" class="anora-input" id="filterValueInput" value="Miền Bắc" placeholder="Nhập giá trị (VD: Miền Bắc)" style="width: 200px; padding: 6px 12px; font-size: 0.82rem;">
+        
+        <button class="nav-btn" onclick="applyConditionFilter('remove')" style="background: var(--rose-subtle); color: var(--rose-dark); border-color: var(--rose-light);">
+          <i class="fa-solid fa-trash-can"></i> Xóa dòng thỏa điều kiện (VD: Bỏ Miền Bắc)
+        </button>
+        <button class="nav-btn" onclick="applyConditionFilter('keep')">
+          <i class="fa-solid fa-check-double"></i> Chỉ giữ dòng thỏa điều kiện
+        </button>
+      </div>
+
+      <!-- Bảng Chú thích Phân loại Màu sắc Ô Chỉnh sửa -->
+      <div style="display: flex; gap: 16px; margin-bottom: 12px; font-size: 0.8rem; flex-wrap: wrap;">
+        <span style="display: flex; align-items: center; gap: 6px;">
+          <span style="display: inline-block; width: 14px; height: 14px; background: #E8F5E9; border: 1px solid #C8E6C9; border-radius: 3px;"></span>
+          🟢 Chuẩn hóa định dạng
+        </span>
+        <span style="display: flex; align-items: center; gap: 6px;">
+          <span style="display: inline-block; width: 14px; height: 14px; background: #FFF8E1; border: 1px solid #FFE082; border-radius: 3px;"></span>
+          🟡 Lỗi số / Ngoại lai
+        </span>
+        <span style="display: flex; align-items: center; gap: 6px;">
+          <span style="display: inline-block; width: 14px; height: 14px; background: #E3F2FD; border: 1px solid #BBDEFB; border-radius: 3px;"></span>
+          🔵 Điền giá trị thiếu
+        </span>
+        <span style="display: flex; align-items: center; gap: 6px;">
+          <span style="display: inline-block; width: 14px; height: 14px; background: #FCE4EC; border: 1px solid #F8BBD0; border-radius: 3px;"></span>
+          🌸 Sửa thủ công theo phản hồi / HITL (Nhấp đúp vào ô để sửa)
+        </span>
+      </div>
+
+      <!-- Bảng Xem Trước Dữ Liệu Tương Tác (Hỗ trợ Inline Cell Editing) -->
+      <div class="data-preview-table-wrapper" id="dataTableContainer">
+        <table class="data-table" id="interactiveDataTable">
+          <thead>
+            <tr id="tableHeaderRow"></tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+
+      <!-- Nhật ký xử lý (Audit Log) -->
+      <div class="anora-panel" style="padding: 20px; margin-bottom: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <h4 style="font-family: var(--font-serif); font-size: 1.05rem; color: var(--sage-primary);">
+            <i class="fa-solid fa-clock-rotate-left"></i> Nhật Ký Xử Lý Dữ Liệu (Audit Log)
+          </h4>
+          <span style="font-size: 0.78rem; color: var(--text-muted);" id="auditCountLabel">0 sự kiện</span>
+        </div>
+        <div id="auditLogList" style="max-height: 140px; overflow-y: auto; font-family: monospace; font-size: 0.8rem; line-height: 1.6; color: var(--text-muted); background: var(--bg-subtle); padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-delicate);">
+          <div>Chưa có thao tác làm sạch nào được ghi nhận.</div>
+        </div>
+      </div>
+
+      <!-- CỔNG KIỂM DUYỆT HITL (HUMAN-IN-THE-LOOP GATE) -->
+      <div class="hitl-gate-panel">
+        <div class="hitl-gate-text">
+          <h3>
+            <i class="fa-solid fa-person-circle-check" style="color: var(--sage-primary);"></i>
+            Cổng Kiểm Duyệt Dữ Liệu HITL (Human-in-the-Loop)
+          </h3>
+          <p>
+            Bạn có toàn quyền phê duyệt dữ liệu sạch để chuyển tiếp sang Động cơ Phân tích 4 Cấp độ hoặc chỉ đạo rà soát lại lặp nhiều vòng.
+          </p>
+        </div>
+
+        <div class="hitl-gate-actions">
+          <!-- Nút Yêu cầu Rà soát lại -->
+          <button class="nav-btn" onclick="openDirectiveModal()" style="border-color: var(--rose-primary); color: var(--rose-dark);">
+            <i class="fa-solid fa-rotate"></i>
+            <span>Yêu cầu rà soát lại</span>
+          </button>
+
+          <!-- Nút Phê duyệt Dữ liệu Hợp lệ -->
+          <button class="hero-cta-btn" onclick="approveAndProceedToAnalytics()" style="padding: 12px 28px;">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Phê duyệt Dữ liệu Hợp lệ</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         TRANG 4 — BƯỚC 3 (PHÂN TÍCH 4 CẤP ĐỘ) & BƯỚC 4 (DASHBOARD)
+         ===================================================================== -->
+    <section class="page-view" id="pageView4">
+      <!-- Thanh điều hướng phụ: Quay lại Bước 2 nếu còn nhiễu -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div>
+          <h2 style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--sage-primary); line-height: 1.2;">
+            Phân Tích 4 Cấp Độ & Dashboard Điều Hành
+          </h2>
+          <p style="font-size: 0.88rem; color: var(--text-muted);" id="dashboardSubtitle">
+            Tính toán trên 100% dữ liệu đã sạch & bám sát bài toán trọng tâm.
+          </p>
+        </div>
+        <button class="nav-btn" onclick="switchPage(3)">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Quay lại Bước 2 (Lọc thêm nếu còn nhiễu)</span>
+        </button>
+      </div>
+
+      <!-- HÀNG 6 THẺ KPI CARDS PASTEL (ĐÚNG PHONG CÁCH ẢNH MẪU) -->
+      <div class="kpi-cards-grid">
+        <div class="kpi-planner-card">
+          <div class="kpi-icon-pill sage"><i class="fa-solid fa-coins"></i></div>
+          <div class="kpi-label">Tổng Doanh Thu</div>
+          <div class="kpi-value" id="kpiTotalRevenue">--</div>
+          <div class="kpi-flourish">❦ ❦ ❦</div>
+        </div>
+
+        <div class="kpi-planner-card">
+          <div class="kpi-icon-pill rose"><i class="fa-solid fa-receipt"></i></div>
+          <div class="kpi-label">Tổng Chi Phí</div>
+          <div class="kpi-value" id="kpiTotalCost">--</div>
+          <div class="kpi-flourish">❦ ❦ ❦</div>
+        </div>
+
+        <div class="kpi-planner-card">
+          <div class="kpi-icon-pill sage"><i class="fa-solid fa-scale-balanced"></i></div>
+          <div class="kpi-label">Lợi Nhuận Ròng</div>
+          <div class="kpi-value" id="kpiNetProfit">--</div>
+          <div class="kpi-flourish">❦ ❦ ❦</div>
+        </div>
+
+        <div class="kpi-planner-card">
+          <div class="kpi-icon-pill rose"><i class="fa-solid fa-percent"></i></div>
+          <div class="kpi-label">Biên Lợi Nhuận</div>
+          <div class="kpi-value" id="kpiProfitMargin">--%</div>
+          <div class="kpi-flourish">❦ ❦ ❦</div>
+        </div>
+
+        <div class="kpi-planner-card">
+          <div class="kpi-icon-pill sand"><i class="fa-solid fa-cart-shopping"></i></div>
+          <div class="kpi-label">Giá Trị Đơn TB (AOV)</div>
+          <div class="kpi-value" id="kpiAvgValue">--</div>
+          <div class="kpi-flourish">❦ ❦ ❦</div>
+        </div>
+
+        <div class="kpi-planner-card">
+          <div class="kpi-icon-pill sage"><i class="fa-solid fa-shield-heart"></i></div>
+          <div class="kpi-label">Bản Ghi Đã Duyệt</div>
+          <div class="kpi-value" id="kpiRecordCount">--</div>
+          <div class="kpi-flourish">❦ ❦ ❦</div>
+        </div>
+      </div>
+
+      <!-- TABS PHÂN TÍCH 4 CẤP ĐỘ BÀI BẢN -->
+      <div class="anora-panel" style="margin-bottom: 24px;">
+        <div class="analysis-tabs-nav">
+          <button class="analysis-tab-btn active" onclick="switchAnalysisTab(1)">1. Mô tả (Descriptive)</button>
+          <button class="analysis-tab-btn" onclick="switchAnalysisTab(2)">2. Chẩn đoán (Diagnostic)</button>
+          <button class="analysis-tab-btn" onclick="switchAnalysisTab(3)">3. Dự đoán (Predictive)</button>
+          <button class="analysis-tab-btn" onclick="switchAnalysisTab(4)">4. Đề xuất (Prescriptive)</button>
+        </div>
+
+        <!-- Cấp độ 1: Mô tả -->
+        <div class="analysis-tab-pane active" id="analysisPane1">
+          <div class="insight-callout-box" id="descriptiveSummaryText">Đang tải phân tích mô tả...</div>
+          <div style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
+            <strong>Mục tiêu:</strong> Xác định chính xác quy mô, doanh thu bình quân và phân bố cơ cấu doanh thu theo từng ngành hàng/vùng miền để lập đường cơ sở (Baseline).
+          </div>
+        </div>
+
+        <!-- Cấp độ 2: Chẩn đoán (Tách bạch Tương quan vs Nhân quả) -->
+        <div class="analysis-tab-pane" id="analysisPane2">
+          <div class="insight-callout-box highlight">
+            <h4 style="font-family: var(--font-serif); color: var(--rose-dark); margin-bottom: 6px;">
+              <i class="fa-solid fa-code-compare"></i> Tách bạch Tương quan (Correlation) vs Quan hệ Nhân quả (Causation)
+            </h4>
+            <p id="correlationCaseStudyText" style="line-height: 1.6; font-size: 0.9rem;">
+              Đang tải phân tích tương quan vs nhân quả...
+            </p>
+          </div>
+          <h4 style="font-family: var(--font-serif); font-size: 1.05rem; color: var(--sage-primary); margin-bottom: 8px;">
+            Điểm nghẽn Vận hành Cốt lõi (Root Bottlenecks):
+          </h4>
+          <ul id="bottlenecksList" style="padding-left: 20px; font-size: 0.88rem; color: var(--text-main); line-height: 1.6;"></ul>
+        </div>
+
+        <!-- Cấp độ 3: Dự đoán -->
+        <div class="analysis-tab-pane" id="analysisPane3">
+          <div class="insight-callout-box">
+            <h4 style="font-family: var(--font-serif); color: var(--sage-primary); margin-bottom: 6px;">
+              <i class="fa-solid fa-chart-line"></i> Dự Báo Xu Hướng 3 Kỳ Tiếp Theo & Mô Hình 3 Kịch Bản
+            </h4>
+            <div id="predictiveScenariosContent" style="font-size: 0.88rem; line-height: 1.6;">Đang tính toán kịch bản...</div>
+          </div>
+          <h4 style="font-family: var(--font-serif); font-size: 1.05rem; color: var(--rose-dark); margin-bottom: 8px;">
+            Rủi ro Trọng yếu Cần Quản trị:
+          </h4>
+          <ul id="predictiveRisksList" style="padding-left: 20px; font-size: 0.88rem; color: var(--text-main); line-height: 1.6;"></ul>
+        </div>
+
+        <!-- Cấp độ 4: Đề xuất -->
+        <div class="analysis-tab-pane" id="analysisPane4">
+          <div class="insight-callout-box highlight">
+            <h4 style="font-family: var(--font-serif); color: var(--sage-primary); margin-bottom: 6px;">
+              <i class="fa-solid fa-compass"></i> Ma Trận Giải Pháp Chiến Lược Bám Sát Bài Toán Bước 1
+            </h4>
+            <div id="prescriptiveGoalsContent" style="font-size: 0.88rem; line-height: 1.6;">Đang xây dựng ma trận đề xuất...</div>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 14px;">
+            <div style="background: var(--bg-subtle); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-delicate);">
+              <h5 style="font-family: var(--font-serif); color: var(--sage-primary); margin-bottom: 8px;">Lộ trình 30 Ngày (Hành động Cấp bách)</h5>
+              <div id="actionPlan30Days" style="font-size: 0.84rem; line-height: 1.5;"></div>
+            </div>
+            <div style="background: var(--bg-subtle); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-delicate);">
+              <h5 style="font-family: var(--font-serif); color: var(--rose-primary); margin-bottom: 8px;">Lộ trình 90 Ngày (Chiến lược Bền vững)</h5>
+              <div id="actionPlan90Days" style="font-size: 0.84rem; line-height: 1.5;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DASHBOARD 4 BIỂU ĐỒ CHART.JS (2x2 GRID) CÓ NHẬN XÉT DƯỚI TỪNG BIỂU ĐỒ -->
+      <div class="charts-grid-2x2">
+        <!-- Biểu đồ 1: Donut Chart -->
+        <div class="chart-box-card">
+          <div class="chart-box-header">
+            <h4 id="donutChartTitle">Cơ cấu Doanh thu & Danh mục</h4>
+            <i class="fa-solid fa-chart-pie" style="color: var(--sage-medium);"></i>
+          </div>
+          <div style="position: relative; height: 260px;">
+            <canvas id="canvasDonut"></canvas>
+          </div>
+          <div class="chart-commentary" id="donutCommentary">--</div>
+        </div>
+
+        <!-- Biểu đồ 2: Bar Chart Kép -->
+        <div class="chart-box-card">
+          <div class="chart-box-header">
+            <h4 id="barChartTitle">Đối chiếu Doanh thu vs Chi phí</h4>
+            <i class="fa-solid fa-chart-column" style="color: var(--rose-primary);"></i>
+          </div>
+          <div style="position: relative; height: 260px;">
+            <canvas id="canvasComparison"></canvas>
+          </div>
+          <div class="chart-commentary" id="comparisonCommentary">--</div>
+        </div>
+
+        <!-- Biểu đồ 3: Line Chart Xu hướng & Dự báo -->
+        <div class="chart-box-card">
+          <div class="chart-box-header">
+            <h4 id="trendChartTitle">Xu hướng Lịch sử & Dự báo 3 Kỳ</h4>
+            <i class="fa-solid fa-arrow-trend-up" style="color: var(--sage-primary);"></i>
+          </div>
+          <div style="position: relative; height: 260px;">
+            <canvas id="canvasTrend"></canvas>
+          </div>
+          <div class="chart-commentary" id="trendCommentary">--</div>
+        </div>
+
+        <!-- Biểu đồ 4: Horizontal Bar Vùng miền -->
+        <div class="chart-box-card">
+          <div class="chart-box-header">
+            <h4 id="regionChartTitle">Phân bổ Hiệu quả theo Khu vực</h4>
+            <i class="fa-solid fa-map-location-dot" style="color: var(--gold-accent);"></i>
+          </div>
+          <div style="position: relative; height: 260px;">
+            <canvas id="canvasRegion"></canvas>
+          </div>
+          <div class="chart-commentary" id="regionCommentary">--</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 30px; display: flex; justify-content: flex-end;">
+        <button class="hero-cta-btn" onclick="switchPage(5)">
+          <span>Tiến hành Xuất Báo Cáo DIID & 3 Tệp</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         TRANG 5 — XUẤT BÁO CÁO WORD CHUẨN DIID, XEM TRƯỚC IN & XUẤT 3 TỆP
+         ===================================================================== -->
+    <section class="page-view" id="pageView5">
+      <!-- Thanh công cụ xuất tệp & Xem trước khi in -->
+      <div class="export-actions-bar">
+        <div>
+          <h2 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--sage-primary); margin-bottom: 4px;">
+            Trung Tâm Xuất Báo Cáo Chuẩn DIID & Lưu Trữ
+          </h2>
+          <p style="font-size: 0.86rem; color: var(--text-muted);">
+            Tạo trọn bộ 3 tệp định dạng cao cấp, hỗ trợ Xem trước khi in (Print Preview) và lưu vào Lịch sử chạy.
+          </p>
+        </div>
+
+        <div class="export-triplet-group">
+          <!-- Xuất trọn bộ 3 tệp -->
+          <button class="nav-btn btn-primary-sage" id="btnExportAll" onclick="triggerExportAllFiles()">
+            <i class="fa-solid fa-file-arrow-down"></i>
+            <span>Tạo & Xuất Trọn Bộ 3 Tệp</span>
+          </button>
+
+          <!-- In / Lưu PDF -->
+          <button class="nav-btn" onclick="printReportPreview()">
+            <i class="fa-solid fa-print"></i>
+            <span>In Báo Cáo / Lưu PDF</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Khung tải 3 tệp riêng rẽ sau khi sinh -->
+      <div id="downloadCardsContainer" style="display: none; margin-bottom: 24px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+          <!-- File 1: Excel -->
+          <div class="feature-card" style="display: flex; align-items: center; justify-content: space-between; padding: 18px;">
+            <div>
+              <div style="font-weight: 700; color: #2E7D32;"><i class="fa-solid fa-file-excel"></i> Dữ Liệu Sạch (.xlsx)</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Bao gồm sheet Data sạch & Audit log</div>
+            </div>
+            <a href="#" class="export-btn excel" id="linkDownloadExcel" download>
+              <i class="fa-solid fa-download"></i> Tải về
+            </a>
+          </div>
+
+          <!-- File 2: Word DIID -->
+          <div class="feature-card" style="display: flex; align-items: center; justify-content: space-between; padding: 18px;">
+            <div>
+              <div style="font-weight: 700; color: #1565C0;"><i class="fa-solid fa-file-word"></i> Báo Cáo DIID (.docx)</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Font Times New Roman 13pt & 4 biểu đồ</div>
+            </div>
+            <a href="#" class="export-btn docx" id="linkDownloadDocx" download>
+              <i class="fa-solid fa-download"></i> Tải về
+            </a>
+          </div>
+
+          <!-- File 3: HTML Độc lập -->
+          <div class="feature-card" style="display: flex; align-items: center; justify-content: space-between; padding: 18px;">
+            <div>
+              <div style="font-weight: 700; color: var(--rose-dark);"><i class="fa-solid fa-file-code"></i> Báo Cáo Web (.html)</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Mở offline trên mọi máy tính</div>
+            </div>
+            <a href="#" class="export-btn html" id="linkDownloadHtml" download>
+              <i class="fa-solid fa-download"></i> Tải về
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- MÀN HÌNH XEM TRƯỚC KHI IN (PRINT PREVIEW - A4 SHEET SIMULATION) -->
+      <div class="print-preview-viewport">
+        <div class="a4-sheet" id="printPreviewSheet">
+          <div style="text-align: center; padding: 60px 0; color: var(--text-muted);">
+            <i class="fa-solid fa-file-invoice" style="font-size: 3rem; color: var(--sage-medium); margin-bottom: 16px;"></i>
+            <h3>Đang tải bản xem trước Báo Cáo DIID...</h3>
+            <p style="font-size: 0.9rem;">Bấm nút <strong>'Tạo & Xuất Trọn Bộ 3 Tệp'</strong> ở phía trên để nạp nội dung chi tiết.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       TRỢ LÝ ẢO AI ANORA (FLOATING MASCOT CHAT DRAWER)
+       ========================================================================= -->
+  <div class="ai-mascot-fab" id="mascotFab" title="Bấm để trò chuyện với Trợ lý ảo AnoraAI">
+    <img src="/static/images/mascot.svg" alt="AnoraAI Mascot">
+  </div>
+
+  <div class="ai-chat-drawer" id="aiChatDrawer">
+    <div class="chat-header">
+      <h4>
+        <img src="/static/images/mascot.svg" style="width: 24px; height: 24px;">
+        <span>Trợ Lý Ảo AnoraAI</span>
+      </h4>
+      <button onclick="toggleChatDrawer()" style="background: none; border: none; font-size: 1.1rem; color: var(--text-muted); cursor: pointer;">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg assistant">
+        Xin chào! Mình là <strong>Anora</strong>, trợ lý ảo đồng hành phân tích dữ liệu cho doanh nghiệp bạn. 
+        Bạn cần mình giải đáp về phương pháp báo cáo DIID, quy trình làm sạch HITL hay cách tách biệt tương quan vs nhân quả?
+      </div>
+    </div>
+
+    <!-- Gợi ý câu hỏi nhanh -->
+    <div class="chat-quick-prompts">
+      <div class="quick-prompt-pill" onclick="sendQuickPrompt('Giải thích phương pháp báo cáo DIID?')">Phương pháp DIID là gì?</div>
+      <div class="quick-prompt-pill" onclick="sendQuickPrompt('Tách bạch Tương quan vs Nhân quả thế nào?')">Tương quan vs Nhân quả</div>
+      <div class="quick-prompt-pill" onclick="sendQuickPrompt('Làm sao để lọc bỏ Miền Bắc tại Bước 2?')">Cách lọc bỏ Miền Bắc?</div>
+      <div class="quick-prompt-pill" onclick="sendQuickPrompt('Tóm tắt sức khỏe kinh doanh hiện tại của tôi?')">Tóm tắt số liệu hiện tại</div>
+    </div>
+
+    <div class="chat-input-bar">
+      <input type="text" id="chatInput" placeholder="Hỏi Anora về dữ liệu, chỉ số, chiến lược..." onkeydown="if(event.key==='Enter') sendChatMessage()">
+      <button class="chat-send-btn" onclick="sendChatMessage()">
+        <i class="fa-solid fa-paper-plane" style="font-size: 0.85rem;"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 1: LỊCH SỬ CHẠY (RUN HISTORY)
+       ========================================================================= -->
+  <div class="modal-overlay" id="historyModal">
+    <div class="modal-container">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-delicate); padding-bottom: 14px; margin-bottom: 20px;">
+        <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--sage-primary);">
+          <i class="fa-solid fa-clock-rotate-left"></i> Lịch Sử Chạy Của Hệ Thống
+        </h3>
+        <button onclick="closeHistoryModal()" style="background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-muted);">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div id="historyListContainer" style="display: flex; flex-direction: column; gap: 14px;">
+        <p style="text-align: center; color: var(--text-muted);">Đang tải danh sách lịch sử...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 2: CHỈ ĐẠO RÀ SOÁT LẠI HITL (DIRECTIVE REVIEW)
+       ========================================================================= -->
+  <div class="modal-overlay" id="directiveModal">
+    <div class="modal-container" style="max-width: 550px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-delicate); padding-bottom: 14px; margin-bottom: 16px;">
+        <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--rose-primary);">
+          <i class="fa-solid fa-rotate"></i> Yêu Cầu Rà Soát Lại (Cổng HITL)
+        </h3>
+        <button onclick="closeDirectiveModal()" style="background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-muted);">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 14px;">
+        Nhập chỉ đạo cụ thể để Agent thực hiện rà soát và tinh chỉnh lại dữ liệu (ví dụ: <em>"Bỏ các dòng Miền Bắc", "Thay thế ô trống bằng trung vị", "Loại bỏ đơn hàng dưới 2 triệu"</em>):
+      </p>
+
+      <textarea class="anora-textarea" id="directiveTextInput" rows="3" placeholder="Nhập chỉ đạo rà soát của bạn (VD: Bỏ Miền Bắc, Thay BD thành Bình Dương, Bỏ số âm...)..."></textarea>
+
+      <div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center;">
+        <span style="font-size: 0.78rem; color: var(--text-muted);">Gợi ý nhanh:</span>
+        <button type="button" class="badge badge-clean" style="cursor: pointer; border: 1px dashed var(--border-delicate); background: var(--bg-card);" onclick="document.getElementById('directiveTextInput').value='Cột tháng định dạng là YYYY - MM'">Định dạng YYYY - MM</button>
+        <button type="button" class="badge badge-clean" style="cursor: pointer; border: 1px dashed var(--border-delicate); background: var(--bg-card);" onclick="document.getElementById('directiveTextInput').value='Bỏ Miền Bắc'">Bỏ Miền Bắc</button>
+        <button type="button" class="badge badge-clean" style="cursor: pointer; border: 1px dashed var(--border-delicate); background: var(--bg-card);" onclick="document.getElementById('directiveTextInput').value='Thay BD thành Bình Dương'">Thay BD thành Bình Dương</button>
+        <button type="button" class="badge badge-clean" style="cursor: pointer; border: 1px dashed var(--border-delicate); background: var(--bg-card);" onclick="document.getElementById('directiveTextInput').value='Bỏ các dòng số lượng âm'">Bỏ số âm</button>
+        <button type="button" class="badge badge-clean" style="cursor: pointer; border: 1px dashed var(--border-delicate); background: var(--bg-card);" onclick="document.getElementById('directiveTextInput').value='Chỉ giữ kênh Website'">Chỉ giữ Website</button>
+        <button type="button" class="badge badge-clean" style="cursor: pointer; border: 1px dashed var(--border-delicate); background: var(--bg-card);" onclick="document.getElementById('directiveTextInput').value='Điền ô trống là Chưa xác định'">Điền Chưa xác định</button>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 16px;">
+        <button class="nav-btn" onclick="closeDirectiveModal()">Hủy</button>
+        <button class="nav-btn btn-primary-sage" onclick="submitReviewDirective()">
+          <i class="fa-solid fa-paper-plane"></i> Gửi chỉ đạo rà soát
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script Modules -->
+  <script src="/static/js/cleaning.js"></script>
+  <script src="/static/js/charts.js"></script>
+  <script src="/static/js/assistant.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

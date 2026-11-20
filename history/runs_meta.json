@@ -1,0 +1,410 @@
+[
+  {
+    "run_id": "RUN_20261120_091129_539b97",
+    "timestamp": "2026-11-20 09:11:38",
+    "business_name": "Công ty Cổ phần Anora Retail",
+    "business_model": "Sản xuất & Chuỗi cung ứng",
+    "core_problem": "Tối ưu hóa cơ cấu chi phí vận hành & Tăng biên lợi nhuận ròng",
+    "summary_metrics": {
+      "revenue": 1083500000.0,
+      "cost": 1303300000.0,
+      "net_profit": -219800000.0,
+      "profit_margin": -20.29,
+      "records": 14
+    },
+    "files": {
+      "excel": "/api/download/excel/C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261120_091129_539b97.xlsx",
+      "docx": "/api/download/docx/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261120_091129_539b97.docx",
+      "html": "/api/download/html/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261120_091129_539b97.html",
+      "local_paths": {
+        "excel": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261120_091129_539b97.xlsx",
+        "docx": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261120_091129_539b97.docx",
+        "html": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261120_091129_539b97.html"
+      }
+    }
+  },
+  {
+    "run_id": "RUN_20261120_090337_6fd967",
+    "timestamp": "2026-11-20 09:03:43",
+    "business_name": "Công ty Cổ phần phan",
+    "business_model": "Thương mại điện tử E-commerce",
+    "core_problem": "Đánh giá hiệu quả các kênh bán hàng & Năng suất từng đơn vị vùng miền",
+    "summary_metrics": {
+      "revenue": 723600000.0,
+      "cost": 0.0,
+      "net_profit": 723600000.0,
+      "profit_margin": 100.0,
+      "records": 54
+    },
+    "files": {
+      "excel": "/api/download/excel/C_ng_ty_C__ph_n_phan_DuLieuSach_RUN_20261120_090337_6fd967.xlsx",
+      "docx": "/api/download/docx/C_ng_ty_C__ph_n_phan_BaoCaoDIID_RUN_20261120_090337_6fd967.docx",
+      "html": "/api/download/html/C_ng_ty_C__ph_n_phan_BaoCaoDieuHanh_RUN_20261120_090337_6fd967.html",
+      "local_paths": {
+        "excel": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_phan_DuLieuSach_RUN_20261120_090337_6fd967.xlsx",
+        "docx": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_phan_BaoCaoDIID_RUN_20261120_090337_6fd967.docx",
+        "html": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_phan_BaoCaoDieuHanh_RUN_20261120_090337_6fd967.html"
+      }
+    }
+  },
+  {
+    "run_id": "RUN_20261120_090241_483fdc",
+    "timestamp": "2026-11-20 09:02:49",
+    "business_name": "Công ty Cổ phần Anora Retail",
+    "business_model": "B2C Bán lẻ & Chuỗi F&B",
+    "core_problem": "Tối ưu hóa cơ cấu chi phí vận hành & Tăng biên lợi nhuận ròng",
+    "summary_metrics": {
+      "revenue": 144450000.0,
+      "cost": 94130000.0,
+      "net_profit": 50320000.0,
+      "profit_margin": 34.84,
+      "records": 24
+    },
+    "files": {
+      "excel": "/api/download/excel/C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261120_090241_483fdc.xlsx",
+      "docx": "/api/download/docx/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261120_090241_483fdc.docx",
+      "html": "/api/download/html/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261120_090241_483fdc.html",
+      "local_paths": {
+        "excel": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261120_090241_483fdc.xlsx",
+        "docx": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261120_090241_483fdc.docx",
+        "html": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261120_090241_483fdc.html"
+      }
+    }
+  },
+  {
+    "run_id": "RUN_20261120_090009_e3f420",
+    "timestamp": "2026-11-20 09:00:16",
+    "business_name": "Công ty Cổ phần Anora Retail",
+    "business_model": "B2C Bán lẻ & Chuỗi F&B",
+    "core_problem": "Tối ưu hóa cơ cấu chi phí vận hành & Tăng biên lợi nhuận ròng",
+    "summary_metrics": {
+      "revenue": 144450000.0,
+      "cost": 94130000.0,
+      "net_profit": 50320000.0,
+      "profit_margin": 34.84,
+      "records": 24
+    },
+    "files": {
+      "excel": "/api/download/excel/C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261120_090009_e3f420.xlsx",
+      "docx": "/api/download/docx/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261120_090009_e3f420.docx",
+      "html": "/api/download/html/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261120_090009_e3f420.html",
+      "local_paths": {
+        "excel": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261120_090009_e3f420.xlsx",
+        "docx": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261120_090009_e3f420.docx",
+        "html": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261120_090009_e3f420.html"
+      }
+    }
+  },
+  {
+    "run_id": "RUN_20261120_085745_07e904",
+    "timestamp": "2026-11-20 08:57:51",
+    "business_name": "Anora SaaS Cloud",
+    "business_model": "B2B SaaS Subscription",
+    "core_problem": "Giảm Churn Rate & Tối ưu LTV",
+    "summary_metrics": {
+      "revenue": 541000000.0,
+      "cost": 89200000.0,
+      "net_profit": 451800000.0,
+      "profit_margin": 83.51,
+      "records": 18
+    },
+    "files": {
+      "excel": "/api/download/excel/Anora_SaaS_Cloud_DuLieuSach_RUN_20261120_085745_07e904.xlsx",
+      "docx": "/api/download/docx/Anora_SaaS_Cloud_BaoCaoDIID_RUN_20261120_085745_07e904.docx",
+      "html": "/api/download/html/Anora_SaaS_Cloud_BaoCaoDieuHanh_RUN_20261120_085745_07e904.html",
+      "local_paths": {
+        "excel": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\Anora_SaaS_Cloud_DuLieuSach_RUN_20261120_085745_07e904.xlsx",
+        "docx": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\Anora_SaaS_Cloud_BaoCaoDIID_RUN_20261120_085745_07e904.docx",
+        "html": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\Anora_SaaS_Cloud_BaoCaoDieuHanh_RUN_20261120_085745_07e904.html"
+      }
+    }
+  },
+  {
+    "run_id": "RUN_20261120_084921_45c118",
+    "timestamp": "2026-11-20 08:49:29",
+    "business_name": "Công ty Cổ phần Anora Retail",
+    "business_model": "Sản xuất & Chuỗi cung ứng",
+    "core_problem": "Tối ưu hóa vòng quay hàng tồn kho & Kiểm soát tỷ lệ hàng lỗi sản xuất",
+    "summary_metrics": {
+      "revenue": 1083500000.0,
+      "cost": 1303300000.0,
+      "net_profit": -219800000.0,
+      "profit_margin": -20.29,
+      "records": 14
+    },
+    "files": {
+      "excel": "/api/download/excel/C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261120_084921_45c118.xlsx",
+      "docx": "/api/download/docx/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261120_084921_45c118.docx",
+      "html": "/api/download/html/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261120_084921_45c118.html",
+      "local_paths": {
+        "excel": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261120_084921_45c118.xlsx",
+        "docx": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261120_084921_45c118.docx",
+        "html": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261120_084921_45c118.html"
+      }
+    }
+  },
+  {
+    "run_id": "RUN_20261120_083145_fc5b31",
+    "timestamp": "2026-11-20 08:31:53",
+    "business_name": "Công ty Cổ phần Anora Retail",
+    "business_model": "B2B SaaS & Phần mềm dịch vụ",
+    "core_problem": "Phân tích nguyên nhân sụt giảm doanh thu & Rời bỏ khách hàng (Churn)",
+    "summary_metrics": {
+      "revenue": 541000000.0,
+      "cost": 89200000.0,
+      "net_profit": 451800000.0,
+      "profit_margin": 83.51,
+      "records": 18
+    },
+    "files": {
+      "excel": "/api/download/excel/C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261120_083145_fc5b31.xlsx",
+      "docx": "/api/download/docx/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261120_083145_fc5b31.docx",
+      "html": "/api/download/html/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261120_083145_fc5b31.html",
+      "local_paths": {
+        "excel": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261120_083145_fc5b31.xlsx",
+        "docx": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261120_083145_fc5b31.docx",
+        "html": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261120_083145_fc5b31.html"
+      }
+    }
+  },
+  {
+    "run_id": "RUN_20261120_082537_c3e6be",
+    "timestamp": "2026-11-20 08:25:42",
+    "business_name": "Công ty Cổ phần Anora Retail",
+    "business_model": "Sản xuất & Chuỗi cung ứng",
+    "core_problem": "Tối ưu hóa cơ cấu chi phí vận hành & Tăng biên lợi nhuận ròng",
+    "summary_metrics": {
+      "revenue": 1083500000.0,
+      "cost": 1303300000.0,
+      "net_profit": -219800000.0,
+      "profit_margin": -20.29,
+      "records": 14
+    },
+    "files": {
+      "excel": "/api/download/excel/C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261120_082537_c3e6be.xlsx",
+      "docx": "/api/download/docx/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261120_082537_c3e6be.docx",
+      "html": "/api/download/html/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261120_082537_c3e6be.html",
+      "local_paths": {
+        "excel": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261120_082537_c3e6be.xlsx",
+        "docx": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261120_082537_c3e6be.docx",
+        "html": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261120_082537_c3e6be.html"
+      }
+    }
+  },
+  {
+    "run_id": "RUN_20261120_082431_a5166a",
+    "timestamp": "2026-11-20 08:24:39",
+    "business_name": "Công ty Cổ phần Anora Retail",
+    "business_model": "Sản xuất & Chuỗi cung ứng",
+    "core_problem": "Tối ưu hóa cơ cấu chi phí vận hành & Tăng biên lợi nhuận ròng",
+    "summary_metrics": {
+      "revenue": 1083500000.0,
+      "cost": 1303300000.0,
+      "net_profit": -219800000.0,
+      "profit_margin": -20.29,
+      "records": 14
+    },
+    "files": {
+      "excel": "/api/download/excel/C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261120_082431_a5166a.xlsx",
+      "docx": "/api/download/docx/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261120_082431_a5166a.docx",
+      "html": "/api/download/html/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261120_082431_a5166a.html",
+      "local_paths": {
+        "excel": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261120_082431_a5166a.xlsx",
+        "docx": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261120_082431_a5166a.docx",
+        "html": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261120_082431_a5166a.html"
+      }
+    }
+  },
+  {
+    "run_id": "RUN_20261120_075255_c8873d",
+    "timestamp": "2026-11-20 07:53:03",
+    "business_name": "Công ty Cổ phần ngoc",
+    "business_model": "B2C Bán lẻ & Chuỗi F&B",
+    "core_problem": "Tối ưu hóa cơ cấu chi phí vận hành & Tăng biên lợi nhuận ròng",
+    "summary_metrics": {
+      "revenue": 1135530000.0,
+      "cost": 603680000.0,
+      "net_profit": 531850000.0,
+      "profit_margin": 46.84,
+      "records": 49
+    },
+    "files": {
+      "excel": "/api/download/excel/C_ng_ty_C__ph_n_ngoc_DuLieuSach_RUN_20261120_075255_c8873d.xlsx",
+      "docx": "/api/download/docx/C_ng_ty_C__ph_n_ngoc_BaoCaoDIID_RUN_20261120_075255_c8873d.docx",
+      "html": "/api/download/html/C_ng_ty_C__ph_n_ngoc_BaoCaoDieuHanh_RUN_20261120_075255_c8873d.html",
+      "local_paths": {
+        "excel": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_ngoc_DuLieuSach_RUN_20261120_075255_c8873d.xlsx",
+        "docx": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_ngoc_BaoCaoDIID_RUN_20261120_075255_c8873d.docx",
+        "html": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_ngoc_BaoCaoDieuHanh_RUN_20261120_075255_c8873d.html"
+      }
+    }
+  },
+  {
+    "run_id": "RUN_20261119_234157_2506d9",
+    "timestamp": "2026-11-19 23:42:01",
+    "business_name": "Công ty Cổ phần Anora Retail",
+    "business_model": "B2C Bán lẻ & Chuỗi F&B",
+    "core_problem": "Tối ưu hóa vòng quay hàng tồn kho & Kiểm soát tỷ lệ hàng lỗi sản xuất",
+    "summary_metrics": {
+      "revenue": 1135530000.0,
+      "cost": 603680000.0,
+      "net_profit": 531850000.0,
+      "profit_margin": 46.84,
+      "records": 49
+    },
+    "files": {
+      "excel": "/api/download/excel/C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261119_234157_2506d9.xlsx",
+      "docx": "/api/download/docx/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261119_234157_2506d9.docx",
+      "html": "/api/download/html/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261119_234157_2506d9.html",
+      "local_paths": {
+        "excel": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261119_234157_2506d9.xlsx",
+        "docx": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261119_234157_2506d9.docx",
+        "html": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261119_234157_2506d9.html"
+      }
+    }
+  },
+  {
+    "run_id": "RUN_20261119_224323_d5a439",
+    "timestamp": "2026-11-19 22:43:27",
+    "business_name": "Công ty Cổ phần Anora Retail",
+    "business_model": "Thương mại điện tử E-commerce",
+    "core_problem": "Đánh giá hiệu quả các kênh bán hàng & Năng suất từng đơn vị vùng miền",
+    "summary_metrics": {
+      "revenue": 723600000.0,
+      "cost": 0.0,
+      "net_profit": 723600000.0,
+      "profit_margin": 100.0,
+      "records": 54
+    },
+    "files": {
+      "excel": "/api/download/excel/C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261119_224323_d5a439.xlsx",
+      "docx": "/api/download/docx/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261119_224323_d5a439.docx",
+      "html": "/api/download/html/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261119_224323_d5a439.html",
+      "local_paths": {
+        "excel": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261119_224323_d5a439.xlsx",
+        "docx": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261119_224323_d5a439.docx",
+        "html": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261119_224323_d5a439.html"
+      }
+    }
+  },
+  {
+    "run_id": "RUN_20261119_220128_0214b4",
+    "timestamp": "2026-11-19 22:01:31",
+    "business_name": "Công ty Cổ phần Anora Retail",
+    "business_model": "Thương mại điện tử E-commerce",
+    "core_problem": "Phân tích nguyên nhân sụt giảm doanh thu & Rời bỏ khách hàng (Churn)",
+    "summary_metrics": {
+      "revenue": 723600000.0,
+      "cost": 470340000.0,
+      "net_profit": 253260000.0,
+      "profit_margin": 35.0,
+      "records": 54
+    },
+    "files": {
+      "excel": "/api/download/excel/C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261119_220128_0214b4.xlsx",
+      "docx": "/api/download/docx/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261119_220128_0214b4.docx",
+      "html": "/api/download/html/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261119_220128_0214b4.html",
+      "local_paths": {
+        "excel": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261119_220128_0214b4.xlsx",
+        "docx": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261119_220128_0214b4.docx",
+        "html": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261119_220128_0214b4.html"
+      }
+    }
+  },
+  {
+    "run_id": "RUN_20261119_214955_cbed20",
+    "timestamp": "2026-11-19 21:49:59",
+    "business_name": "Công ty Cổ phần Abcd",
+    "business_model": "Thương mại điện tử E-commerce",
+    "core_problem": "Đánh giá hiệu quả các kênh bán hàng & Năng suất từng đơn vị vùng miền",
+    "summary_metrics": {
+      "revenue": 1916293250000.0,
+      "cost": 1245590612500.0,
+      "net_profit": 670702637500.0,
+      "profit_margin": 35.0,
+      "records": 4960
+    },
+    "files": {
+      "excel": "/api/download/excel/C_ng_ty_C__ph_n_Abcd_DuLieuSach_RUN_20261119_214955_cbed20.xlsx",
+      "docx": "/api/download/docx/C_ng_ty_C__ph_n_Abcd_BaoCaoDIID_RUN_20261119_214955_cbed20.docx",
+      "html": "/api/download/html/C_ng_ty_C__ph_n_Abcd_BaoCaoDieuHanh_RUN_20261119_214955_cbed20.html",
+      "local_paths": {
+        "excel": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Abcd_DuLieuSach_RUN_20261119_214955_cbed20.xlsx",
+        "docx": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Abcd_BaoCaoDIID_RUN_20261119_214955_cbed20.docx",
+        "html": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Abcd_BaoCaoDieuHanh_RUN_20261119_214955_cbed20.html"
+      }
+    }
+  },
+  {
+    "run_id": "RUN_20261119_211028_c9c5f8",
+    "timestamp": "2026-11-19 21:10:32",
+    "business_name": "Công ty Cổ phần Anora Retail",
+    "business_model": "B2C Bán lẻ & Chuỗi F&B",
+    "core_problem": "Tối ưu hóa cơ cấu chi phí vận hành & Tăng biên lợi nhuận ròng",
+    "summary_metrics": {
+      "revenue": 100000000.0,
+      "cost": 65000000.0,
+      "net_profit": 35000000.0,
+      "profit_margin": 35.0,
+      "records": 4960
+    },
+    "files": {
+      "excel": "/api/download/excel/C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261119_211028_c9c5f8.xlsx",
+      "docx": "/api/download/docx/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261119_211028_c9c5f8.docx",
+      "html": "/api/download/html/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261119_211028_c9c5f8.html",
+      "local_paths": {
+        "excel": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261119_211028_c9c5f8.xlsx",
+        "docx": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261119_211028_c9c5f8.docx",
+        "html": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261119_211028_c9c5f8.html"
+      }
+    }
+  },
+  {
+    "run_id": "RUN_20261119_205820_43f5e1",
+    "timestamp": "2026-11-19 20:58:26",
+    "business_name": "Công ty Cổ phần Anora Retail",
+    "business_model": "B2B SaaS & Phần mềm dịch vụ",
+    "core_problem": "Tối ưu hóa cơ cấu chi phí vận hành & Tăng biên lợi nhuận ròng",
+    "summary_metrics": {
+      "revenue": 100000000.0,
+      "cost": 65000000.0,
+      "net_profit": 35000000.0,
+      "profit_margin": 35.0,
+      "records": 54
+    },
+    "files": {
+      "excel": "/api/download/excel/C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261119_205820_43f5e1.xlsx",
+      "docx": "/api/download/docx/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261119_205820_43f5e1.docx",
+      "html": "/api/download/html/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261119_205820_43f5e1.html",
+      "local_paths": {
+        "excel": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261119_205820_43f5e1.xlsx",
+        "docx": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261119_205820_43f5e1.docx",
+        "html": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261119_205820_43f5e1.html"
+      }
+    }
+  },
+  {
+    "run_id": "RUN_20261119_205203_82544f",
+    "timestamp": "2026-11-19 20:52:10",
+    "business_name": "Công ty Cổ phần Anora Retail",
+    "business_model": "B2C Bán lẻ & Chuỗi F&B",
+    "core_problem": "Tối ưu hóa cơ cấu chi phí vận hành & Tăng biên lợi nhuận ròng",
+    "summary_metrics": {
+      "revenue": 101900000.0,
+      "cost": 67480000.0,
+      "net_profit": 34420000.0,
+      "profit_margin": 33.78,
+      "records": 16
+    },
+    "files": {
+      "excel": "/api/download/excel/C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261119_205203_82544f.xlsx",
+      "docx": "/api/download/docx/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261119_205203_82544f.docx",
+      "html": "/api/download/html/C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261119_205203_82544f.html",
+      "local_paths": {
+        "excel": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_DuLieuSach_RUN_20261119_205203_82544f.xlsx",
+        "docx": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDIID_RUN_20261119_205203_82544f.docx",
+        "html": "C:\\Users\\User\\OneDrive\\Tài liệu\\my agent\\exports\\C_ng_ty_C__ph_n_Anora_Retail_BaoCaoDieuHanh_RUN_20261119_205203_82544f.html"
+      }
+    }
+  }
+]
