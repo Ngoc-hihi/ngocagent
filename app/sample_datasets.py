@@ -9,7 +9,19 @@ import pandas as pd
 import numpy as np
 
 SAMPLE_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "samples")
-os.makedirs(SAMPLE_DIR, exist_ok=True)
+try:
+    os.makedirs(SAMPLE_DIR, exist_ok=True)
+except Exception:
+    pass
+
+def _safe_save(df, filename_base):
+    try:
+        csv_p = os.path.join(SAMPLE_DIR, f"{filename_base}.csv")
+        xlsx_p = os.path.join(SAMPLE_DIR, f"{filename_base}.xlsx")
+        df.to_csv(csv_p, index=False, encoding="utf-8-sig")
+        df.to_excel(xlsx_p, index=False)
+    except Exception:
+        pass
 
 def generate_retail_fb_dataset():
     """Mẫu 1: Chuỗi Bán lẻ & F&B (Doanh thu, Chi phí, Vùng miền Bắc-Trung-Nam, Kênh bán)"""
@@ -41,8 +53,7 @@ def generate_retail_fb_dataset():
         {"Ngay": "2024-01-27", "Ma_Don": "ORD-1024", "Chi_Nhanh": "Chi nhánh Cầu Giấy 2", "Vung_Mien": "Miền Bắc", "Kenh_Ban": "Tại chỗ", "Nhom_Hang": "Combo", "Doanh_Thu": 8200000, "Chi_Phi_Von": 3350000, "Chi_Phi_Van_Hanh": 2100000, "So_Khach": 138, "Danh_Gia": 4.7},
     ]
     df = pd.DataFrame(data)
-    df.to_csv(os.path.join(SAMPLE_DIR, "retail_fb_sample.csv"), index=False, encoding="utf-8-sig")
-    df.to_excel(os.path.join(SAMPLE_DIR, "retail_fb_sample.xlsx"), index=False)
+    _safe_save(df, "retail_fb_sample")
     return df
 
 def generate_saas_dataset():
@@ -69,8 +80,7 @@ def generate_saas_dataset():
         {"Thang": "2024-01", "Ma_KH": "CUST-018", "Doanh_Nghiep": "Hue Tourism Corp", "Goi_Dich_Vu": "Starter", "Vung_Mien": "Miền Trung", "MRR": 7000000, "Chi_Phi_CSKH": None, "So_Ticket": 2, "Diem_NPS": 8, "Trang_Thai": "Gia hạn"}, # missing
     ]
     df = pd.DataFrame(data)
-    df.to_csv(os.path.join(SAMPLE_DIR, "saas_sample.csv"), index=False, encoding="utf-8-sig")
-    df.to_excel(os.path.join(SAMPLE_DIR, "saas_sample.xlsx"), index=False)
+    _safe_save(df, "saas_sample")
     return df
 
 def generate_manufacturing_dataset():
@@ -93,8 +103,7 @@ def generate_manufacturing_dataset():
         {"Ngay": "2024-01-28", "Lo_Hang": "BATCH-14", "Nha_May": "Nhà máy Tiền Giang", "Vung_Mien": "Miền Nam", "Dong_SP": "Cao cấp", "San_Luong": 9000, "Chi_Phi_NL": 71000000, "Chi_Phi_Van_Chuyen": 13000000, "Ty_Le_Loi_Pct": 0.9, "Thoi_Gian_Giao_Ngay": 2},
     ]
     df = pd.DataFrame(data)
-    df.to_csv(os.path.join(SAMPLE_DIR, "manufacturing_sample.csv"), index=False, encoding="utf-8-sig")
-    df.to_excel(os.path.join(SAMPLE_DIR, "manufacturing_sample.xlsx"), index=False)
+    _safe_save(df, "manufacturing_sample")
     return df
 
 def init_samples():

@@ -7,6 +7,28 @@ let selectedSampleType = "retail";
 let selectedUploadFile = null;
 let needsReportRefresh = true;
 
+/**
+ * Xử lý response an toàn cho mọi môi trường (Localhost & Vercel Serverless)
+ * Tránh lỗi SyntaxError khi server trả về văn bản hoặc mã lỗi HTTP không phải JSON
+ */
+async function parseJsonResponse(response) {
+  const text = await response.text();
+  let json;
+  try {
+    json = JSON.parse(text);
+  } catch (e) {
+    if (!response.ok) {
+      throw new Error(`Máy chủ phản hồi lỗi (${response.status}): ${text.slice(0, 150)}`);
+    }
+    throw new Error(`Định dạng dữ liệu không hợp lệ: ${text.slice(0, 100)}`);
+  }
+  if (!response.ok) {
+    const errorMsg = json.detail || json.message || `Lỗi máy chủ (${response.status})`;
+    throw new Error(errorMsg);
+  }
+  return json;
+}
+
 // =============================================================================
 // ĐIỀU HƯỚNG 5 TRANG (SPA PAGE SWITCHER)
 // =============================================================================
@@ -77,7 +99,7 @@ function initSessionControls() {
     resetBtn.addEventListener("click", () => {
       if (confirm("Bạn có chắc chắn muốn làm mới toàn bộ phiên làm việc? Dữ liệu hiện tại sẽ được khởi tạo lại.")) {
         fetch("/api/session/reset", { method: "POST" })
-          .then(r => r.json())
+          .then(parseJsonResponse)
           .then(() => {
             selectedSampleType = "retail";
             selectedUploadFile = null;
@@ -228,7 +250,7 @@ function submitStep1AndProceed() {
     method: "POST",
     body: formData
   })
-  .then(r => r.json())
+  .then(parseJsonResponse)
   .then(data => {
     if (proceedBtn) proceedBtn.innerHTML = '<span>Tiếp tục sang Bước 2 (Làm sạch HITL)</span> <i class="fa-solid fa-arrow-right"></i>';
     if (data.status === "success") {
@@ -260,7 +282,7 @@ function triggerExportAllFiles(isAuto = false) {
   fetch("/api/step5/export-all", {
     method: "POST"
   })
-  .then(r => r.json())
+  .then(parseJsonResponse)
   .then(data => {
     if (exportBtn) exportBtn.innerHTML = '<i class="fa-solid fa-file-arrow-down"></i> <span>Tạo & Xuất Trọn Bộ 3 Tệp</span>';
     if (data.status === "success") {
@@ -328,7 +350,7 @@ function fetchHistoryList() {
   if (!container) return;
 
   fetch("/api/history")
-    .then(r => r.json())
+    .then(parseJsonResponse)
     .then(list => {
       if (!list || list.length === 0) {
         container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 20px;">Chưa có phiên chạy nào được lưu trữ.</div>`;

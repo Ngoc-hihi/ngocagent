@@ -10,6 +10,17 @@ docx_generator.py - Tạo Báo cáo Phân tích Kinh doanh chuẩn mẫu doanh n
 """
 
 import os
+import tempfile
+
+# Cấu hình thư mục cache Matplotlib trên môi trường Serverless (Vercel) / Read-only
+if "MPLCONFIGDIR" not in os.environ:
+    tmp_mpl = os.path.join(tempfile.gettempdir(), "matplotlib")
+    os.environ["MPLCONFIGDIR"] = tmp_mpl
+try:
+    os.makedirs(os.environ["MPLCONFIGDIR"], exist_ok=True)
+except Exception:
+    pass
+
 import docx
 from docx.shared import Inches, Pt, RGBColor, Cm
 from docx.enum.text import WD_ALIGN_PARAGRAPH
