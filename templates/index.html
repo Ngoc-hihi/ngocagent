@@ -827,6 +827,7 @@
 
       <div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center;">
         <span style="font-size: 0.78rem; color: var(--text-muted);">Gợi ý nhanh:</span>
+        <button type="button" class="badge badge-clean" style="cursor: pointer; border: 1px dashed var(--border-delicate); background: var(--bg-card);" onclick="document.getElementById('directiveTextInput').value='Loại bỏ giá trị cột số lượng nhỏ hơn 5'">Bỏ Số lượng &lt; 5</button>
         <button type="button" class="badge badge-clean" style="cursor: pointer; border: 1px dashed var(--border-delicate); background: var(--bg-card);" onclick="document.getElementById('directiveTextInput').value='Cột tháng định dạng là YYYY - MM'">Định dạng YYYY - MM</button>
         <button type="button" class="badge badge-clean" style="cursor: pointer; border: 1px dashed var(--border-delicate); background: var(--bg-card);" onclick="document.getElementById('directiveTextInput').value='Bỏ Miền Bắc'">Bỏ Miền Bắc</button>
         <button type="button" class="badge badge-clean" style="cursor: pointer; border: 1px dashed var(--border-delicate); background: var(--bg-card);" onclick="document.getElementById('directiveTextInput').value='Thay BD thành Bình Dương'">Thay BD thành Bình Dương</button>
@@ -834,6 +835,14 @@
         <button type="button" class="badge badge-clean" style="cursor: pointer; border: 1px dashed var(--border-delicate); background: var(--bg-card);" onclick="document.getElementById('directiveTextInput').value='Chỉ giữ kênh Website'">Chỉ giữ Website</button>
         <button type="button" class="badge badge-clean" style="cursor: pointer; border: 1px dashed var(--border-delicate); background: var(--bg-card);" onclick="document.getElementById('directiveTextInput').value='Điền ô trống là Chưa xác định'">Điền Chưa xác định</button>
       </div>
+
+      <details style="margin-top: 12px; font-size: 0.82rem; color: var(--text-muted); background: var(--bg-subtle); padding: 8px 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-delicate);">
+        <summary style="cursor: pointer; font-weight: 600; color: var(--sage-primary);">🔑 Cấu hình Gemini API Key dự phòng (tùy chọn cho câu phức tạp)</summary>
+        <div style="margin-top: 8px;">
+          <input type="password" id="directiveApiKeyInput" class="anora-input" placeholder="Dán khóa Gemini API chuẩn (bắt đầu bằng AIza...) để lưu trên trình duyệt" style="width: 100%; font-size: 0.82rem; padding: 6px 10px;">
+          <div style="font-size: 0.74rem; margin-top: 4px;">Lưu ý: Nếu dùng Google AI Studio Key chuẩn (<code>AIza...</code>), bộ não AI sẽ hiểu mọi yêu cầu phức tạp.</div>
+        </div>
+      </details>
 
       <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 16px;">
         <button class="nav-btn" onclick="closeDirectiveModal()">Hủy</button>

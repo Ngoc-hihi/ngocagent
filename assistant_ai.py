@@ -11,8 +11,10 @@ import json
 import urllib.request
 import re
 
-def _get_gemini_api_key() -> str:
-    key = os.getenv("GEMINI_API_KEY", "").strip()
+def _get_gemini_api_key(override_key: str = "") -> str:
+    if override_key and override_key.strip():
+        return override_key.strip().strip("\"'")
+    key = os.getenv("GEMINI_API_KEY", "").strip().strip("\"'")
     if not key and os.path.exists(".env"):
         try:
             with open(".env", encoding="utf-8") as f:
@@ -22,25 +24,27 @@ def _get_gemini_api_key() -> str:
                         break
         except Exception:
             pass
-    return key or "AQ.Ab8RN6LTbwMsX7CvKdD8NtFTQlDacI-x3IAQnhWSEKrdzrDUjA"
+    return key
 
 CANDIDATE_MODELS = [
-    "gemini-flash-lite-latest",
-    "gemini-3-flash-preview",
-    "gemini-3.5-flash"
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite",
+    "gemini-2.0-flash",
+    "gemini-flash-latest",
+    "gemini-3-flash-preview"
 ]
 
 class AssistantAI:
     @classmethod
-    def answer_query(cls, user_message: str, context: dict = None, history: list = None) -> str:
+    def answer_query(cls, user_message: str, context: dict = None, history: list = None, api_key: str = "") -> str:
         msg = (user_message or "").strip()
         if not msg:
             return "Chào bạn, mình là Anora! Bạn cần mình giải đáp câu hỏi gì hôm nay?"
 
         # 1. Gọi Google Gemini API với đầy đủ lịch sử hội thoại & ngữ cảnh dữ liệu
-        api_key = _get_gemini_api_key()
-        if api_key:
-            gemini_ans = cls._call_gemini(msg, context, history or [], api_key)
+        eff_key = _get_gemini_api_key(api_key)
+        if eff_key:
+            gemini_ans = cls._call_gemini(msg, context, history or [], eff_key)
             if gemini_ans:
                 return gemini_ans
 
@@ -112,11 +116,14 @@ class AssistantAI:
 
             # Thử qua các mô hình Gemini khả dụng
             for model_name in CANDIDATE_MODELS:
-                url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
+                url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent"
                 req = urllib.request.Request(
                     url,
                     data=body_bytes,
-                    headers={"Content-Type": "application/json"}
+                    headers={
+                        "Content-Type": "application/json",
+                        "x-goog-api-key": api_key
+                    }
                 )
                 try:
                     with urllib.request.urlopen(req, timeout=20) as response:

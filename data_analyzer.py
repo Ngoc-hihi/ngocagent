@@ -369,7 +369,9 @@ class DataAnalyzer:
         date_success = False
         if date_col:
             try:
-                parsed_dates = pd.to_datetime(df_timed[date_col], errors='coerce', dayfirst=True)
+                sample_strs = df_timed[date_col].dropna().astype(str).str.strip()
+                iso_ratio = sample_strs.str.match(r'^\d{4}[\-\/\.]').mean() if len(sample_strs) > 0 else 0
+                parsed_dates = pd.to_datetime(df_timed[date_col], errors='coerce', dayfirst=(iso_ratio < 0.5))
                 valid_mask = parsed_dates.notnull()
                 if valid_mask.sum() >= max(4, int(len(df) * 0.25)):
                     df_timed['_parsed_dt'] = parsed_dates

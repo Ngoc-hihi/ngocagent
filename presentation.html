@@ -603,11 +603,28 @@
       display: block;
     }
 
+    /* Student Info Bar */
+    .student-info-bar {
+      background: var(--sage-soft);
+      border: 1px solid #CEDCC5;
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-bottom: 18px;
+      display: grid;
+      grid-template-columns: 1.5fr 0.8fr 0.8fr;
+      gap: 14px;
+      align-items: center;
+    }
+
     /* Responsive */
     @media (max-width: 960px) {
       .slide { padding: 24px 22px; max-height: none; }
-      .hero-wrap, .grid-2, .grid-3, .grid-4, .flow-5, .overview-grid {
+      .hero-wrap, .grid-2, .grid-3, .grid-4, .flow-5, .overview-grid, .student-info-bar {
         grid-template-columns: 1fr;
+      }
+      .student-info-bar > div {
+        border-left: none !important;
+        padding-left: 0 !important;
       }
       .kbd-hint { display: none; }
       .demo-banner { flex-direction: column; align-items: flex-start; }
@@ -672,23 +689,38 @@
         <div class="hero-wrap">
           <div>
             <span class="slide-kicker">Intelligent Business Data Agent</span>
-            <h1 class="hero-title">AnoraAI — Cách Vận Hành Trợ Lý AI Phân Tích Dữ Liệu Doanh Nghiệp</h1>
-            <p class="hero-desc">
+            <h1 class="hero-title" style="font-size: 2.25rem; margin-bottom: 12px;">AnoraAI — Cách Vận Hành Trợ Lý AI Phân Tích Dữ Liệu Doanh Nghiệp</h1>
+            <p class="hero-desc" style="margin-bottom: 16px;">
               Nền tảng kết hợp tự động hóa xử lý dữ liệu, <strong>cổng kiểm duyệt có con người tham gia (HITL)</strong>, 
               động cơ phân tích 4 cấp độ chuẩn <strong>DIID</strong> và xuất báo cáo đa định dạng chỉ trong vài thao tác.
             </p>
-            <div class="hero-pills">
-              <span class="pill">⚡ Quy trình 5 bước khép kín</span>
-              <span class="pill">🛡️ Kiểm duyệt HITL bằng tiếng Việt</span>
-              <span class="pill">📊 Phân tích 4 cấp độ DIID</span>
-              <span class="pill">🤖 Tích hợp Google Gemini AI</span>
+
+            <div class="student-info-bar">
+              <div>
+                <div style="font-size: 0.74rem; color: var(--text-muted); font-weight: 600;">SINH VIÊN THỰC HIỆN</div>
+                <div style="font-size: 0.96rem; font-weight: 700; color: var(--sage-dark);">Phạm Hà Ánh Ngọc</div>
+              </div>
+              <div style="border-left: 1px solid #C8D7BF; padding-left: 14px;">
+                <div style="font-size: 0.74rem; color: var(--text-muted); font-weight: 600;">LỚP</div>
+                <div style="font-size: 0.96rem; font-weight: 700; color: var(--text-main);">QTKD1</div>
+              </div>
+              <div style="border-left: 1px solid #C8D7BF; padding-left: 14px;">
+                <div style="font-size: 0.74rem; color: var(--text-muted); font-weight: 600;">MÔN HỌC</div>
+                <div style="font-size: 0.96rem; font-weight: 700; color: var(--text-main);">AI301</div>
+              </div>
+            </div>
+
+            <div class="hero-pills" style="margin-bottom: 18px;">
+              <span class="pill">⚡ Quy trình 5 bước</span>
+              <span class="pill">🛡️ Kiểm duyệt HITL tiếng Việt</span>
+              <span class="pill">📊 Phân tích DIID 4 cấp độ</span>
             </div>
             <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-              <button class="btn btn-demo" style="padding: 11px 22px; font-size: 0.95rem;" onclick="nextSlide()">
-                Bắt đầu tìm hiểu →
+              <button class="btn btn-demo" style="padding: 10px 20px; font-size: 0.94rem;" onclick="nextSlide()">
+                Bắt đầu thuyết trình →
               </button>
-              <a class="btn" style="padding: 11px 20px; font-size: 0.95rem;" href="https://anhngoc-two.vercel.app/" target="_blank" rel="noopener noreferrer">
-                🌐 Truy cập Sản phẩm Demo
+              <a class="btn" style="padding: 10px 18px; font-size: 0.94rem;" href="https://anhngoc-two.vercel.app/" target="_blank" rel="noopener noreferrer">
+                🌐 Mở Sản phẩm Demo
               </a>
             </div>
           </div>
@@ -707,7 +739,7 @@
             </div>
             <div class="mini-stat">
               <span>3. Phân tích chuyên sâu</span>
-              <strong>4 Cấp độ DIID</strong>
+              <strong>4 Cấp độ &amp; DIID</strong>
             </div>
             <div class="mini-stat">
               <span>4. Đầu ra hoàn chỉnh</span>
@@ -721,8 +753,8 @@
         </div>
       </div>
       <div class="slide-footer-note">
-        <span>AnoraAI — Plan Beautifully, Analyze Intentionally, Decide Confidently</span>
-        <span>Demo URL: <strong>anhngoc-two.vercel.app</strong></span>
+        <span>Phạm Hà Ánh Ngọc — Lớp QTKD1 — Môn AI301</span>
+        <span>Slide 1 / 9</span>
       </div>
     </section>
 
@@ -762,53 +794,177 @@
       </div>
     </section>
 
-    <!-- SLIDE 3: QUY TRÌNH 5 BƯỚC -->
-    <section class="slide" data-title="Chu trình vận hành 5 bước">
-      <div class="slide-top">
-        <span class="slide-kicker">02 • Luồng Nghiệp Vụ Cốt Lõi</span>
-        <h2 class="slide-title">Chu trình vận hành khép kín gồm 5 bước</h2>
-        <p class="slide-subtitle">Mỗi bước đều có rào chắn kiểm tra hợp lệ để đảm bảo đầu ra chính xác 100% theo ngữ cảnh doanh nghiệp.</p>
+    <!-- SLIDE 3: SƠ ĐỒ QUY TRÌNH BPMN 2.0 -->
+    <section class="slide" data-title="Sơ đồ quy trình BPMN 2.0">
+      <div class="slide-top" style="margin-bottom: 10px;">
+        <span class="slide-kicker">02 • Luồng Nghiệp Vụ Cốt Lõi (BPMN 2.0)</span>
+        <h2 class="slide-title">Sơ đồ Quy trình Vận hành Hệ thống AnoraAI</h2>
+        <p class="slide-subtitle">Phân tách rõ 2 làn tương tác giữa <strong>Người dùng (kiểm duyệt HITL)</strong> và <strong>Hệ thống Agent</strong> qua các cổng rẽ nhánh an toàn.</p>
       </div>
       <div class="slide-body">
-        <div class="flow-5">
-          <div class="step-box">
-            <div class="step-num">1</div>
-            <h4>Khởi tạo & Bối cảnh</h4>
-            <p>Khai báo tên công ty, mô hình kinh doanh (B2C, SaaS, Sản xuất...) và bài toán trọng tâm cần giải quyết.</p>
-          </div>
-          <div class="step-box">
-            <div class="step-num">2</div>
-            <h4>Tiếp nhận Dữ liệu</h4>
-            <p>Nạp dữ liệu từ tệp Excel/CSV, dán link Google Sheets hoặc chọn 1 trong 3 bộ dữ liệu mẫu có sẵn.</p>
-          </div>
-          <div class="step-box" style="background: var(--sage-soft); border-color: #C7D7BE;">
-            <div class="step-num">3</div>
-            <h4>Làm sạch & HITL</h4>
-            <p>Auto-Clean xử lý lỗi cơ bản, kết hợp lọc điều kiện, sửa từng ô và rà soát qua lệnh ngôn ngữ tự nhiên.</p>
-          </div>
-          <div class="step-box">
-            <div class="step-num">4</div>
-            <h4>Phân tích 4 Cấp độ</h4>
-            <p>Hệ thống tự nhận diện cột tiền, ngày tháng, danh mục để tính KPI, dự báo 3 kịch bản & vẽ 4 biểu đồ.</p>
-          </div>
-          <div class="step-box" style="background: var(--rose-soft); border-color: #E8CED0;">
-            <div class="step-num" style="background: #9B5E63;">5</div>
-            <h4>Xuất 3 Tệp & Lưu trữ</h4>
-            <p>Kết xuất đồng thời Excel sạch, Word DIID và HTML Print Preview. Lưu lại lịch sử các lần chạy.</p>
-          </div>
+        <div style="width: 100%; background: #FCFBF8; border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px;">
+          <svg viewBox="0 0 1040 336" style="width: 100%; height: auto; display: block; font-family: 'Be Vietnam Pro', Arial, sans-serif;" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="arrowSage" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#5C6B52"/>
+              </marker>
+              <marker id="arrowRose" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#9B5E63"/>
+              </marker>
+              <marker id="arrowGray" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#4A5246"/>
+              </marker>
+            </defs>
+
+            <!-- Pool Container -->
+            <rect x="4" y="4" width="1032" height="328" rx="10" fill="#FFFFFF" stroke="#C8C0B4" stroke-width="1.5"/>
+
+            <!-- Pool Left Header -->
+            <path d="M 14 4 L 36 4 L 36 332 L 14 332 Q 4 332 4 322 L 4 14 Q 4 4 14 4 Z" fill="#5C6B52"/>
+            <text x="20" y="168" fill="#FFFFFF" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90 20 168)" letter-spacing="1.2">QUY TRÌNH ANORA AI AGENT</text>
+
+            <!-- Lane 1 Background & Header (User / HITL) -->
+            <rect x="36" y="4" width="1000" height="164" fill="#FFFDFB"/>
+            <rect x="36" y="4" width="32" height="164" fill="#FAF0F1" stroke="#E5DDD0" stroke-width="1"/>
+            <text x="52" y="86" fill="#7D454A" font-size="11" font-weight="700" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90 52 86)">Người dùng (HITL)</text>
+
+            <!-- Lane 2 Background & Header (AnoraAI System) -->
+            <rect x="36" y="168" width="1000" height="164" fill="#F8FBF6"/>
+            <rect x="36" y="168" width="32" height="164" fill="#EEF3EB" stroke="#E5DDD0" stroke-width="1"/>
+            <text x="52" y="250" fill="#43503B" font-size="11" font-weight="700" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90 52 250)">Hệ thống AnoraAI</text>
+
+            <!-- Swimlane Divider -->
+            <line x1="36" y1="168" x2="1036" y2="168" stroke="#D5CEC2" stroke-width="1.3"/>
+
+            <!-- ============ CONNECTOR ARROWS (SEQUENCE FLOWS) ============ -->
+            <!-- Start -> Task 1 -->
+            <line x1="115" y1="92" x2="136" y2="92" stroke="#4A5246" stroke-width="1.8" marker-end="url(#arrowGray)"/>
+
+            <!-- Task 1 -> Gateway 1 -->
+            <line x1="282" y1="92" x2="309" y2="92" stroke="#4A5246" stroke-width="1.8" marker-end="url(#arrowGray)"/>
+
+            <!-- Gateway 1 Loop Back (Thiếu / Chặn) -->
+            <path d="M 334 70 L 334 26 L 211 26 L 211 54" fill="none" stroke="#9B5E63" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#arrowRose)"/>
+            <rect x="225" y="16" width="94" height="20" rx="10" fill="#FAF0F1" stroke="#E2BFC2" stroke-width="1"/>
+            <text x="272" y="29" fill="#8A2444" font-size="10" font-weight="700" text-anchor="middle">Thiếu (Chặn)</text>
+
+            <!-- Gateway 1 -> Task 2 (Hợp lệ) -->
+            <line x1="334" y1="114" x2="334" y2="208" stroke="#5C6B52" stroke-width="1.8" marker-end="url(#arrowSage)"/>
+            <rect x="299" y="145" width="70" height="20" rx="10" fill="#EEF3EB" stroke="#B7C9AE" stroke-width="1"/>
+            <text x="334" y="158" fill="#43503B" font-size="10" font-weight="700" text-anchor="middle">Hợp lệ ✓</text>
+
+            <!-- Task 2 -> Task 3 (System back to User HITL) -->
+            <path d="M 409 248 L 434 248 L 434 92 L 456 92" fill="none" stroke="#5C6B52" stroke-width="1.8" marker-end="url(#arrowSage)"/>
+
+            <!-- Task 3 -> Gateway 2 -->
+            <line x1="612" y1="92" x2="639" y2="92" stroke="#4A5246" stroke-width="1.8" marker-end="url(#arrowGray)"/>
+
+            <!-- Gateway 2 Loop Back (Rà soát lại) -->
+            <path d="M 664 70 L 664 26 L 536 26 L 536 54" fill="none" stroke="#9B5E63" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#arrowRose)"/>
+            <rect x="547" y="16" width="106" height="20" rx="10" fill="#FAF0F1" stroke="#E2BFC2" stroke-width="1"/>
+            <text x="600" y="29" fill="#8A2444" font-size="10" font-weight="700" text-anchor="middle">Rà soát lại (Lặp)</text>
+
+            <!-- Gateway 2 -> Task 4 (Phê duyệt) -->
+            <line x1="664" y1="114" x2="664" y2="208" stroke="#5C6B52" stroke-width="1.8" marker-end="url(#arrowSage)"/>
+            <rect x="622" y="145" width="84" height="20" rx="10" fill="#EEF3EB" stroke="#B7C9AE" stroke-width="1"/>
+            <text x="664" y="158" fill="#43503B" font-size="10" font-weight="700" text-anchor="middle">Phê duyệt ✓</text>
+
+            <!-- Task 4 -> Task 5 -->
+            <line x1="742" y1="248" x2="770" y2="248" stroke="#5C6B52" stroke-width="1.8" marker-end="url(#arrowSage)"/>
+
+            <!-- Task 5 -> User Result Task -->
+            <line x1="848" y1="212" x2="848" y2="130" stroke="#5C6B52" stroke-width="1.8" marker-end="url(#arrowSage)"/>
+
+            <!-- User Result Task -> End Event -->
+            <line x1="922" y1="92" x2="954" y2="92" stroke="#4A5246" stroke-width="1.8" marker-end="url(#arrowGray)"/>
+
+            <!-- ============ NODES ============ -->
+            <!-- Start Event -->
+            <circle cx="100" cy="92" r="15" fill="#E6F2E4" stroke="#5C6B52" stroke-width="2.5"/>
+            <text x="100" y="123" fill="#252A23" font-size="11" font-weight="700" text-anchor="middle">Bắt đầu</text>
+
+            <!-- Task 1: User Task -->
+            <rect x="140" y="58" width="142" height="68" rx="9" fill="#FFFFFF" stroke="#9B5E63" stroke-width="1.8"/>
+            <rect x="146" y="63" width="46" height="14" rx="4" fill="#FAF0F1"/>
+            <text x="169" y="73" fill="#8A2444" font-size="8.5" font-weight="700" text-anchor="middle">👤 USER</text>
+            <text x="211" y="90" fill="#252A23" font-size="12" font-weight="700" text-anchor="middle">1. Khởi tạo &amp; Nạp</text>
+            <text x="211" y="105" fill="#5A6256" font-size="10.2" text-anchor="middle">Mô hình + Excel/CSV</text>
+            <text x="211" y="118" fill="#5A6256" font-size="10.2" text-anchor="middle">G-Sheets / Dữ liệu mẫu</text>
+
+            <!-- Gateway 1: Guardrail -->
+            <polygon points="334,70 356,92 334,114 312,92" fill="#FFF9EC" stroke="#B69156" stroke-width="2"/>
+            <line x1="327" y1="85" x2="341" y2="99" stroke="#7C5C08" stroke-width="2.2" stroke-linecap="round"/>
+            <line x1="341" y1="85" x2="327" y2="99" stroke="#7C5C08" stroke-width="2.2" stroke-linecap="round"/>
+            <text x="362" y="96" fill="#7C5C08" font-size="10.5" font-weight="700" text-anchor="start">Hợp lệ?</text>
+
+            <!-- Task 2: System Auto-Clean -->
+            <rect x="259" y="212" width="150" height="72" rx="9" fill="#FFFFFF" stroke="#5C6B52" stroke-width="1.8"/>
+            <rect x="265" y="217" width="52" height="14" rx="4" fill="#EEF3EB"/>
+            <text x="291" y="227" fill="#43503B" font-size="8.5" font-weight="700" text-anchor="middle">⚙ AGENT</text>
+            <text x="334" y="244" fill="#252A23" font-size="12" font-weight="700" text-anchor="middle">2. Lược đồ &amp; Clean</text>
+            <text x="334" y="259" fill="#5A6256" font-size="10.2" text-anchor="middle">Chuẩn số VN, ngày ISO</text>
+            <text x="334" y="272" fill="#5A6256" font-size="10.2" text-anchor="middle">&amp; gắn 4 nhãn màu</text>
+
+            <!-- Task 3: User HITL -->
+            <rect x="460" y="58" width="152" height="68" rx="9" fill="#FAF7F2" stroke="#9B5E63" stroke-width="1.8"/>
+            <rect x="466" y="63" width="46" height="14" rx="4" fill="#FAF0F1"/>
+            <text x="489" y="73" fill="#8A2444" font-size="8.5" font-weight="700" text-anchor="middle">👤 HITL</text>
+            <text x="536" y="90" fill="#252A23" font-size="12" font-weight="700" text-anchor="middle">3. Cổng Duyệt HITL</text>
+            <text x="536" y="105" fill="#5A6256" font-size="10.2" text-anchor="middle">Sửa ô, lọc điều kiện</text>
+            <text x="536" y="118" fill="#5A6256" font-size="10.2" text-anchor="middle">&amp; chỉ đạo tiếng Việt</text>
+
+            <!-- Gateway 2: Approve? -->
+            <polygon points="664,70 686,92 664,114 642,92" fill="#FFF9EC" stroke="#B69156" stroke-width="2"/>
+            <line x1="657" y1="85" x2="671" y2="99" stroke="#7C5C08" stroke-width="2.2" stroke-linecap="round"/>
+            <line x1="671" y1="85" x2="657" y2="99" stroke="#7C5C08" stroke-width="2.2" stroke-linecap="round"/>
+            <text x="692" y="96" fill="#7C5C08" font-size="10.5" font-weight="700" text-anchor="start">Phê duyệt?</text>
+
+            <!-- Task 4: System 4-Level Analytics -->
+            <rect x="586" y="212" width="156" height="72" rx="9" fill="#FFFFFF" stroke="#5C6B52" stroke-width="1.8"/>
+            <rect x="592" y="217" width="52" height="14" rx="4" fill="#EEF3EB"/>
+            <text x="618" y="227" fill="#43503B" font-size="8.5" font-weight="700" text-anchor="middle">⚙ AGENT</text>
+            <text x="664" y="244" fill="#252A23" font-size="12" font-weight="700" text-anchor="middle">4. Phân tích 4 Cấp độ</text>
+            <text x="664" y="259" fill="#5A6256" font-size="10.2" text-anchor="middle">Mô tả • Chẩn đoán • Dự</text>
+            <text x="664" y="272" fill="#5A6256" font-size="10.2" text-anchor="middle">đoán hồi quy • Đề xuất</text>
+
+            <!-- Task 5: System Export DIID -->
+            <rect x="774" y="212" width="148" height="72" rx="9" fill="#FFFFFF" stroke="#5C6B52" stroke-width="1.8"/>
+            <rect x="780" y="217" width="52" height="14" rx="4" fill="#EEF3EB"/>
+            <text x="806" y="227" fill="#43503B" font-size="8.5" font-weight="700" text-anchor="middle">⚙ AGENT</text>
+            <text x="848" y="244" fill="#252A23" font-size="12" font-weight="700" text-anchor="middle">5. Xuất 3 Tệp DIID</text>
+            <text x="848" y="259" fill="#5A6256" font-size="10.2" text-anchor="middle">Excel • Word • HTML</text>
+            <text x="848" y="272" fill="#5A6256" font-size="10.2" text-anchor="middle">&amp; Lưu Lịch sử chạy</text>
+
+            <!-- User Receive & Assistant -->
+            <rect x="774" y="58" width="148" height="68" rx="9" fill="#EEF3EB" stroke="#5C6B52" stroke-width="1.8"/>
+            <rect x="780" y="63" width="60" height="14" rx="4" fill="#FFFFFF"/>
+            <text x="810" y="73" fill="#43503B" font-size="8.5" font-weight="700" text-anchor="middle">📊 KẾT QUẢ</text>
+            <text x="848" y="90" fill="#252A23" font-size="12" font-weight="700" text-anchor="middle">Khai thác &amp; Hỏi đáp</text>
+            <text x="848" y="105" fill="#5A6256" font-size="10.2" text-anchor="middle">Dashboard, tải 3 tệp</text>
+            <text x="848" y="118" fill="#5A6256" font-size="10.2" text-anchor="middle">&amp; Trợ lý Anora 24/7</text>
+
+            <!-- End Event -->
+            <circle cx="974" cy="92" r="15" fill="#FAF0F1" stroke="#9B5E63" stroke-width="4.2"/>
+            <text x="974" y="123" fill="#7D454A" font-size="11" font-weight="700" text-anchor="middle">Hoàn tất</text>
+          </svg>
         </div>
 
-        <div class="card" style="margin-top: 20px; flex-direction: row; align-items: center; justify-content: space-between; padding: 14px 20px;">
-          <div style="font-size: 0.94rem;">
-            <strong>🔒 Ràng buộc an toàn (Guardrail):</strong> Hệ thống tự động chặn không cho chuyển bước nếu thiếu Mô hình kinh doanh hoặc chưa nạp dữ liệu hợp lệ.
+        <!-- Legend & Live Web Link -->
+        <div class="card" style="margin-top: 12px; flex-direction: row; align-items: center; justify-content: space-between; padding: 10px 18px; gap: 14px;">
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px; font-size: 0.85rem; color: var(--text-muted);">
+            <span><strong style="color: var(--text-main);">Ký hiệu BPMN:</strong></span>
+            <span>🟢 Viền mảnh: Bắt đầu</span>
+            <span>▭ Bo góc: Tác vụ (User / Agent)</span>
+            <span>◇ Hình thoi (✕): Cổng kiểm duyệt</span>
+            <span>⭕ Viền đậm: Kết thúc</span>
           </div>
-          <a class="btn btn-demo" href="https://anhngoc-two.vercel.app/" target="_blank" rel="noopener noreferrer" style="flex-shrink: 0;">
-            Xem 5 bước trên Web ↗
+          <a class="btn btn-demo" href="https://anhngoc-two.vercel.app/" target="_blank" rel="noopener noreferrer" style="flex-shrink: 0; font-size: 0.85rem; padding: 7px 14px;">
+            Xem quy trình trên Web ↗
           </a>
         </div>
       </div>
       <div class="slide-footer-note">
-        <span>Giao diện Single Page Application (SPA) chuyển bước mượt mà không cần tải lại trang</span>
+        <span>Hai vòng lặp phản hồi (Guardrail &amp; HITL) giúp loại bỏ hoàn toàn rủi ro sai lệch dữ liệu</span>
         <span>Slide 3 / 9</span>
       </div>
     </section>
@@ -836,7 +992,7 @@
 
           <div class="card sage">
             <div class="card-title">🧠 2. Chỉ đạo Rà soát Ngôn ngữ Tự nhiên</div>
-            <p class="card-text">Người dùng chỉ cần gõ yêu cầu như nói chuyện với trợ lý, <strong>DirectiveEngine</strong> (NLP Regex + Google Gemini AI) sẽ thực thi ngay trên bảng:</p>
+            <p class="card-text">Người dùng chỉ cần gõ yêu cầu bằng tiếng Việt như nói chuyện với trợ lý, hệ thống kết hợp nhận diện mẫu câu &amp; Google Gemini AI sẽ thực thi ngay trên bảng:</p>
             <div style="margin-top: 6px;">
               <span class="cmd-chip">"bỏ Miền Bắc"</span>
               <span class="cmd-chip">"chỉ giữ Shopee"</span>
@@ -925,7 +1081,7 @@
 
           <div class="card blue">
             <div class="card-title">🛡️ Phản hồi Liên tục 100%</div>
-            <p class="card-text">Hỗ trợ cơ chế xoay vòng qua các model Gemini (<code>flash-lite</code>, <code>flash-preview</code>) và có sẵn bộ tri thức dự phòng cục bộ nếu mất kết nối API.</p>
+            <p class="card-text">Hỗ trợ cơ chế tự động tối ưu qua các mô hình AI Gemini thế hệ mới và có sẵn bộ tri thức dự phòng thông minh đảm bảo trả lời không gián đoạn.</p>
           </div>
         </div>
 
@@ -966,14 +1122,14 @@
             <div class="card-title">📘 2. Báo cáo Word DIID (.docx)</div>
             <ul class="clean-list">
               <li><strong>Định dạng chuẩn văn bản:</strong> Font Times New Roman cỡ 13pt, trình bày trang trọng.</li>
-              <li><strong>Đầy đủ trực quan:</strong> Nhúng sẵn 4 ảnh biểu đồ Matplotlib sắc nét, bảng phân tích Dashboard và khung ký duyệt.</li>
+              <li><strong>Đầy đủ trực quan:</strong> Nhúng sẵn 4 biểu đồ màu pastel sắc nét, bảng phân tích Dashboard và khung ký duyệt.</li>
             </ul>
           </div>
 
           <div class="card rose">
             <div class="card-title">🌐 3. Báo cáo Web Độc Lập (.html)</div>
             <ul class="clean-list">
-              <li><strong>Nhúng ảnh Base64:</strong> Mở trực tiếp trên mọi trình duyệt mà không cần kết nối mạng.</li>
+              <li><strong>Trình bày tự chủ:</strong> Nhúng sẵn toàn bộ hình ảnh biểu đồ, mở trực tiếp trên mọi trình duyệt không cần mạng.</li>
               <li><strong>Print Preview:</strong> Xem trước ngay trong ứng dụng và in sang PDF chỉ với 1 click.</li>
             </ul>
           </div>
@@ -985,65 +1141,30 @@
       </div>
     </section>
 
-    <!-- SLIDE 8: KIẾN TRÚC CÔNG NGHỆ -->
-    <section class="slide" data-title="Kiến trúc kỹ thuật & Serverless">
-      <div class="slide-top">
-        <span class="slide-kicker">07 • Kiến Trúc Kỹ Thuật</span>
-        <h2 class="slide-title">Công nghệ Lõi & Tối ưu Triển khai Cloud Vercel</h2>
-        <p class="slide-subtitle">Thiết kế gọn nhẹ, tách biệt rõ ràng các module xử lý và tương thích hoàn toàn với môi trường Serverless.</p>
-      </div>
-      <div class="slide-body">
-        <div class="grid-2">
-          <div class="card">
-            <div class="card-title">⚙️ Ngăn xếp Công nghệ (Tech Stack)</div>
-            <ul class="clean-list">
-              <li><strong>Backend API:</strong> Python FastAPI (ASGI) tốc độ cao.</li>
-              <li><strong>Xử lý & Phân tích:</strong> Pandas, NumPy, Regex NLP Engine.</li>
-              <li><strong>Sinh báo cáo & Biểu đồ:</strong> Python-Docx, OpenPyXL, Matplotlib (Server) & Chart.js (Client).</li>
-              <li><strong>Mô hình AI:</strong> Google Gemini API kết nối qua HTTPS REST.</li>
-            </ul>
-          </div>
-
-          <div class="card sage">
-            <div class="card-title">☁️ Cơ chế Tương thích Vercel Serverless</div>
-            <ul class="clean-list">
-              <li><strong>Chuyển vùng lưu trữ tự động:</strong> Ghi tạm tệp xuất và bộ đệm Matplotlib vào <code>/tmp/</code> khi chạy trên ổ đĩa chỉ đọc của Cloud Lambda.</li>
-              <li><strong>Truyền State an toàn (Stateless-Safe):</strong> Client đóng gói bảng dữ liệu gửi kèm khi phê duyệt, tránh thất lạc phiên giữa các worker.</li>
-              <li><strong>Tự động khôi phục (Self-healing):</strong> Tự tái tạo tệp tải về nếu request rơi vào container vừa khởi động.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="slide-footer-note">
-        <span>Vận hành đồng nhất trên cả Localhost (Uvicorn) và Cloud (Vercel ASGI)</span>
-        <span>Slide 8 / 9</span>
-      </div>
-    </section>
-
-    <!-- SLIDE 9: DEMO TRỰC TIẾP -->
+    <!-- SLIDE 8: DEMO TRỰC TIẾP -->
     <section class="slide" data-title="Kịch bản & Link Demo Trực Tiếp">
       <div class="slide-top">
-        <span class="slide-kicker">08 • Trải Nghiệm Thực Tế</span>
+        <span class="slide-kicker">07 • Trải Nghiệm Thực Tế</span>
         <h2 class="slide-title">Kịch Bản Demo Trực Tiếp Sản Phẩm</h2>
-        <p class="slide-subtitle">Người thuyết trình có thể mở trực tiếp liên kết sản phẩm bên dưới để minh họa toàn bộ luồng hoạt động cho người xem.</p>
+        <p class="slide-subtitle">Mở trực tiếp liên kết sản phẩm bên dưới để minh họa toàn bộ luồng hoạt động của AnoraAI cho Thầy Cô và các bạn.</p>
       </div>
       <div class="slide-body">
         <div class="grid-2">
           <div class="card">
             <div class="card-title">🎬 Gợi ý Kịch bản Demo 3 Phút</div>
             <ul class="clean-list">
-              <li><strong>Phút 1 — Nạp dữ liệu:</strong> Chọn bộ dữ liệu mẫu <em>Chuỗi Bán lẻ & F&amp;B</em> (hoặc tải file Excel thực tế bất kỳ) và bấm sang Bước 2.</li>
+              <li><strong>Phút 1 — Nạp dữ liệu:</strong> Chọn bộ dữ liệu mẫu <em>Chuỗi Bán lẻ &amp; F&amp;B</em> (hoặc tải file Excel thực tế bất kỳ) và bấm sang Bước 2.</li>
               <li><strong>Phút 2 — Kiểm duyệt HITL:</strong> Bấm <em>"Thực hiện làm sạch"</em> để thấy các ô tự động tô màu, sau đó gõ lệnh <code>bỏ Miền Bắc</code> vào cổng HITL.</li>
-              <li><strong>Phút 3 — Phân tích & Xuất file:</strong> Bấm <em>"Phê duyệt Dữ liệu Hợp lệ"</em> để xem Dashboard 4 biểu đồ, hỏi Trợ lý Anora và xem bản Word/HTML ở Bước 5.</li>
+              <li><strong>Phút 3 — Phân tích &amp; Xuất file:</strong> Bấm <em>"Phê duyệt Dữ liệu Hợp lệ"</em> để xem Dashboard 4 biểu đồ, hỏi Trợ lý Anora và xem bản Word/HTML ở Bước 5.</li>
             </ul>
           </div>
 
           <div class="card sage" style="justify-content: center;">
             <div class="card-title">✨ Điểm nhấn khi trình bày</div>
             <ul class="clean-list">
-              <li>Mọi con số trên Dashboard và Word đều thay đổi theo đúng dữ liệu sau khi bạn lọc ở cổng HITL.</li>
-              <li>Không bịa đặt dữ liệu: nếu file tải lên chỉ có doanh thu mà không có chi phí, Agent sẽ ghi rõ "Chưa ghi nhận chi phí" thay vì tự bịa số.</li>
-              <li>Người xem có thể tự quét hoặc truy cập link Vercel ngay trên máy cá nhân để thử nghiệm.</li>
+              <li>Mọi con số trên Dashboard và Word đều thay đổi theo đúng dữ liệu sau khi lọc tại cổng HITL.</li>
+              <li>Không bịa đặt dữ liệu: dự báo bám sát xu hướng tuyến tính thực tế và ghi rõ nếu tệp thiếu chi phí.</li>
+              <li>Thầy Cô và các bạn có thể truy cập trực tiếp đường link bên dưới trên máy cá nhân để trải nghiệm.</li>
             </ul>
           </div>
         </div>
@@ -1051,7 +1172,7 @@
         <div class="demo-banner">
           <div>
             <div style="font-weight: 700; font-size: 1.05rem; color: var(--sage-dark);">
-              🔗 Link Trải Nghiệm Trực Tiếp Sản Phẩm (Vercel Live Demo)
+              🔗 Link Trải Nghiệm Trực Tiếp Sản Phẩm (Live Demo)
             </div>
             <div class="demo-url" id="vercelUrlText">https://anhngoc-two.vercel.app/</div>
           </div>
@@ -1064,7 +1185,49 @@
         </div>
       </div>
       <div class="slide-footer-note">
-        <span>Cảm ơn bạn đã theo dõi phần giới thiệu AnoraAI!</span>
+        <span>Phạm Hà Ánh Ngọc — QTKD1 — Môn AI301</span>
+        <span>Slide 8 / 9</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 9: LỜI CẢM ƠN -->
+    <section class="slide" data-title="Lời cảm ơn">
+      <div class="slide-body" style="align-items: center; text-align: center; justify-content: center; gap: 20px;">
+        <span class="slide-kicker">Môn học: AI301 • Lớp: QTKD1</span>
+        <h2 class="hero-title" style="font-size: 2.45rem; margin-bottom: 2px; max-width: 780px;">
+          Cảm ơn Thầy Cô đã lắng nghe!
+        </h2>
+        <p style="font-size: 1.04rem; color: var(--text-muted); max-width: 650px; line-height: 1.65;">
+          Em xin trân trọng cảm ơn Thầy Cô và các bạn đã theo dõi phần trình bày về cách vận hành trợ lý dữ liệu <strong>AnoraAI</strong>. 
+          Em rất mong nhận được những nhận xét và góp ý của Thầy Cô để hoàn thiện sản phẩm tốt hơn ạ!
+        </p>
+
+        <div class="student-info-bar" style="max-width: 660px; width: 100%; padding: 18px 26px; text-align: left; margin-bottom: 4px;">
+          <div>
+            <div style="font-size: 0.76rem; color: var(--text-muted); font-weight: 600;">SINH VIÊN THỰC HIỆN</div>
+            <div style="font-size: 1.04rem; font-weight: 700; color: var(--sage-dark); margin-top: 2px;">Phạm Hà Ánh Ngọc</div>
+          </div>
+          <div style="border-left: 1px solid #C8D7BF; padding-left: 16px;">
+            <div style="font-size: 0.76rem; color: var(--text-muted); font-weight: 600;">LỚP</div>
+            <div style="font-size: 1.04rem; font-weight: 700; color: var(--text-main); margin-top: 2px;">QTKD1</div>
+          </div>
+          <div style="border-left: 1px solid #C8D7BF; padding-left: 16px;">
+            <div style="font-size: 0.76rem; color: var(--text-muted); font-weight: 600;">MÔN HỌC</div>
+            <div style="font-size: 1.04rem; font-weight: 700; color: var(--text-main); margin-top: 2px;">AI301</div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+          <a class="btn btn-demo" style="padding: 11px 22px; font-size: 0.95rem;" href="https://anhngoc-two.vercel.app/" target="_blank" rel="noopener noreferrer">
+            🚀 Trải nghiệm AnoraAI Live Demo ↗
+          </a>
+          <button class="btn" style="padding: 11px 20px; font-size: 0.95rem;" onclick="goToSlide(0)">
+            ↺ Quay về Trang đầu
+          </button>
+        </div>
+      </div>
+      <div class="slide-footer-note">
+        <span>Trân trọng cảm ơn Thầy Cô — Q&amp;A Session</span>
         <span>Slide 9 / 9</span>
       </div>
     </section>
