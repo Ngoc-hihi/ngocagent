@@ -454,36 +454,72 @@ async def review_directive(directive: str = Form(...)):
     }
 
 @app.post("/api/step2/approve")
-async def approve_and_proceed():
+async def approve_and_proceed(request: Request):
     """
     Phê duyệt dữ liệu hợp lệ tại Cổng kiểm duyệt HITL
     Khóa dữ liệu sạch và kích hoạt động cơ Phân tích 4 Cấp độ (Bước 3 & Bước 4)
+    Hỗ trợ cả Stateless Client Payload và Server Session
     """
-    if CURRENT_SESSION["cleaned_df"] is None or len(CURRENT_SESSION["cleaned_df"]) == 0:
-        raise HTTPException(status_code=400, detail="Không có dữ liệu sạch hợp lệ để phê duyệt.")
+    try:
+        body = {}
+        try:
+            body = await request.json()
+        except Exception:
+            body = {}
 
-    df = CURRENT_SESSION["cleaned_df"]
-    meta = CURRENT_SESSION["business_meta"]
+        df = None
+        # 1. Ưu tiên nhận dữ liệu sạch từ payload Client gửi lên (tránh mất mát state trên Vercel Lambda)
+        if body and body.get("rows") and len(body["rows"]) > 0:
+            df = pd.DataFrame(body["rows"])
+            if body.get("columns"):
+                exist_cols = [c for c in body["columns"] if c in df.columns]
+                if exist_cols:
+                    df = df[exist_cols]
+            CURRENT_SESSION["cleaned_df"] = df
+            if body.get("business_name"):
+                CURRENT_SESSION["business_meta"]["name"] = body["business_name"]
+            if body.get("business_model"):
+                CURRENT_SESSION["business_meta"]["model"] = body["business_model"]
+            if body.get("core_problem"):
+                CURRENT_SESSION["business_meta"]["core_problem"] = body["core_problem"]
+            if body.get("additional_info"):
+                CURRENT_SESSION["business_meta"]["additional_info"] = body["additional_info"]
 
-    now_str = pd.Timestamp.now().strftime("%H:%M:%S")
-    CURRENT_SESSION["audit_log"].append(f"[{now_str}] CỔNG KIỂM DUYỆT HITL: Người dùng đã bấm 'PHÊ DUYỆT DỮ LIỆU HỢP LỆ'. Dữ liệu được niêm phong để phân tích.")
+        # 2. Nếu không có payload, lấy từ CURRENT_SESSION
+        if df is None or len(df) == 0:
+            df = CURRENT_SESSION.get("cleaned_df")
 
-    # Chạy động cơ phân tích 4 cấp độ
-    analysis = DataAnalyzer.analyze(
-        df=df,
-        business_name=meta.get("name", "Doanh nghiệp"),
-        business_model=meta.get("model", "Mô hình chuẩn"),
-        core_problem=meta.get("core_problem", "Tối ưu hóa tổng thể"),
-        additional_info=meta.get("additional_info", "")
-    )
-    CURRENT_SESSION["analysis_data"] = analysis
-    CURRENT_SESSION["exported_files"] = {}
+        # 3. Nếu vẫn không có, tự động kích hoạt phiên chuẩn bị sẵn
+        if df is None or len(df) == 0:
+            ensure_session_ready()
+            df = CURRENT_SESSION["cleaned_df"]
 
-    return {
-        "status": "success",
-        "message": "Phê duyệt thành công! Chuyển sang Bước 3 & Bước 4.",
-        "analysis_data": analysis
-    }
+        meta = CURRENT_SESSION["business_meta"]
+        now_str = pd.Timestamp.now().strftime("%H:%M:%S")
+        CURRENT_SESSION.setdefault("audit_log", []).append(
+            f"[{now_str}] CỔNG KIỂM DUYỆT HITL: Người dùng đã bấm 'PHÊ DUYỆT DỮ LIỆU HỢP LỆ'. Dữ liệu ({len(df)} dòng) được niêm phong để phân tích."
+        )
+
+        # Chạy động cơ phân tích 4 cấp độ
+        analysis = DataAnalyzer.analyze(
+            df=df,
+            business_name=meta.get("name", "Doanh nghiệp"),
+            business_model=meta.get("model", "Mô hình chuẩn"),
+            core_problem=meta.get("core_problem", "Tối ưu hóa tổng thể"),
+            additional_info=meta.get("additional_info", "")
+        )
+        CURRENT_SESSION["analysis_data"] = analysis
+        CURRENT_SESSION["exported_files"] = {}
+
+        return {
+            "status": "success",
+            "message": "Phê duyệt thành công! Chuyển sang Bước 3 & Bước 4.",
+            "analysis_data": analysis
+        }
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=f"Lỗi trong quá trình phân tích 4 cấp độ: {str(e)}")
 
 # =============================================================================
 # TRANG 4 — BƯỚC 3 (PHÂN TÍCH 4 CẤP ĐỘ) & BƯỚC 4 (DASHBOARD)

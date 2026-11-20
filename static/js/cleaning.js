@@ -6,6 +6,25 @@ let currentTableData = [];
 let currentColumns = [];
 let currentCellTags = {};
 
+// Hàm xử lý phản hồi an toàn cho mọi môi trường (Localhost & Vercel)
+window.parseJsonResponse = window.parseJsonResponse || async function(response) {
+  const text = await response.text();
+  let json;
+  try {
+    json = JSON.parse(text);
+  } catch (e) {
+    if (!response.ok) {
+      throw new Error(`Máy chủ phản hồi lỗi (${response.status}): ${text.slice(0, 150)}`);
+    }
+    throw new Error(`Định dạng dữ liệu không hợp lệ: ${text.slice(0, 100)}`);
+  }
+  if (!response.ok) {
+    const errorMsg = json.detail || json.message || `Lỗi máy chủ (${response.status})`;
+    throw new Error(errorMsg);
+  }
+  return json;
+};
+
 function renderInteractiveTable(columns, rows, cellTags = {}) {
   currentColumns = columns || [];
   currentTableData = rows || [];
@@ -116,7 +135,7 @@ function startInlineEdit(cellElement, rIdx, colName, currentValue) {
       method: "POST",
       body: formData
     })
-    .then(r => r.json())
+    .then(window.parseJsonResponse)
     .then(data => {
       if (data.status === "success") {
         currentTableData[rIdx][colName] = newVal;
@@ -171,7 +190,7 @@ function triggerAutoClean() {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(config)
   })
-  .then(r => r.json())
+  .then(window.parseJsonResponse)
   .then(data => {
     if (data.status === "success") {
       updateStatsDisplay(data.after_stats, data.before_stats);
@@ -225,7 +244,7 @@ function applyConditionFilter(action = "remove") {
     method: "POST",
     body: formData
   })
-  .then(r => r.json())
+  .then(window.parseJsonResponse)
   .then(data => {
     if (data.status === "success") {
       updateStatsDisplay(data.after_stats);
@@ -309,7 +328,7 @@ function submitReviewDirective() {
     method: "POST",
     body: formData
   })
-  .then(r => r.json())
+  .then(window.parseJsonResponse)
   .then(data => {
     closeDirectiveModal();
     if (data.status === "success") {
@@ -337,11 +356,34 @@ function submitReviewDirective() {
  * Phê duyệt dữ liệu hợp lệ tại Cổng kiểm duyệt HITL
  */
 function approveAndProceedToAnalytics() {
+  const approveBtn = document.querySelector('button[onclick="approveAndProceedToAnalytics()"]') || document.getElementById("btnApproveHITL");
+  const originalHtml = approveBtn ? approveBtn.innerHTML : '';
+  if (approveBtn) {
+    approveBtn.disabled = true;
+    approveBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Đang phân tích 4 cấp độ...</span>';
+  }
+
+  // Thu thập toàn bộ dữ liệu bảng hiện tại để gửi lên server (tránh mất state trên Vercel Lambda)
+  const payload = {
+    columns: currentColumns,
+    rows: currentTableData,
+    business_name: document.getElementById("businessNameInput") ? document.getElementById("businessNameInput").value.trim() : "",
+    business_model: document.getElementById("businessModelSelect") ? document.getElementById("businessModelSelect").value : "",
+    core_problem: document.getElementById("coreProblemSelect") ? document.getElementById("coreProblemSelect").value : "",
+    additional_info: document.getElementById("additionalInfoInput") ? document.getElementById("additionalInfoInput").value.trim() : ""
+  };
+
   fetch("/api/step2/approve", {
-    method: "POST"
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
   })
-  .then(r => r.json())
+  .then(window.parseJsonResponse)
   .then(data => {
+    if (approveBtn) {
+      approveBtn.disabled = false;
+      approveBtn.innerHTML = originalHtml || '<i class="fa-solid fa-circle-check"></i> <span>Phê duyệt Dữ liệu Hợp lệ</span>';
+    }
     if (data.status === "success") {
       if (typeof needsReportRefresh !== "undefined") needsReportRefresh = true;
       confetti({ particleCount: 70, spread: 80, origin: { y: 0.5 } });
@@ -351,5 +393,11 @@ function approveAndProceedToAnalytics() {
       alert("Lỗi phê duyệt: " + (data.detail || "Chưa thể phê duyệt."));
     }
   })
-  .catch(err => alert("Lỗi kết nối: " + err.message));
+  .catch(err => {
+    if (approveBtn) {
+      approveBtn.disabled = false;
+      approveBtn.innerHTML = originalHtml || '<i class="fa-solid fa-circle-check"></i> <span>Phê duyệt Dữ liệu Hợp lệ</span>';
+    }
+    alert("Lỗi kết nối: " + err.message);
+  });
 }

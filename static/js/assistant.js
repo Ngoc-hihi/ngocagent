@@ -48,7 +48,7 @@ function sendChatMessage() {
     method: "POST",
     body: formData
   })
-  .then(r => r.json())
+  .then(window.parseJsonResponse)
   .then(data => {
     if (data.status === "success") {
       // Chuyển đổi định dạng markdown cơ bản sang HTML sạch đẹp
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
         method: "POST",
         body: formData
       })
-      .then(r => r.json())
+      .then(window.parseJsonResponse)
       .then(data => {
         if (notice) {
           notice.style.display = "block";
